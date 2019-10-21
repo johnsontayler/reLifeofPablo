@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>My first three.js app</title>
+		<link rel="shortcut icon" href="">
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
@@ -29,11 +30,21 @@
 			controls = new THREE.OrbitControls( camera, renderer.domElement);
 
 			var geometry = new THREE.BoxGeometry( 10, 1, 15 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cubeMaterials = 
+			[
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // RIGHT SIDE
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // LEFT SIDE
+				new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'img/2.png' ), side: THREE.FrontSide } ), // TOP SIDE
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BOTTOM SIDE
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // FRONT SIDE
+				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BACK SIDE
+			]
+
+			var material = new THREE.MeshFaceMaterial( cubeMaterials );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
 
-			camera.position.z = 16;
+			camera.position.z = 20;
 
 			var animate = function () {
 				requestAnimationFrame( animate );
