@@ -1,13 +1,19 @@
 <html>
 	<head>
 		<title>My first three.js app</title>
-		<link rel="shortcut icon" href="">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<style>
 			body { margin: 0; }
 			canvas { width: 100%; height: 100% }
 		</style>
 	</head>
 	<body>
+		<div id="overlay">
+			<div>
+				<button id="startButton">Click to Play</button>
+				<p>Audio playback requires user interaction.</p>
+			</div>
+		</div>
 		<script src="js/three.js"></script>
 		<script src="js/OrbitControls.js"></script>
 		<script>
@@ -28,6 +34,19 @@
 				var material = new THREE.MeshFaceMaterial( cubeMaterials );
 				var cube = new THREE.Mesh( geometry, material );
 				scene.add( cube );
+
+				var listener = new THREE.AudioListener();
+				camera.add( listener );
+
+				var sound = new THREE.Audio( listener );
+
+				var audioLoader = new THREE.AudioLoader();
+				audioLoader.load( 'audio/Ultralight-Beam.ogg', function( buffer ) {
+					sound.setBuffer( buffer );
+					sound.setLoop(true);
+					sound.setVolume(0.5);
+					sound.play();
+				});
 	
 				var renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -43,8 +62,6 @@
 				});
 	
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
-	
-	
 	
 				var animate = function () {
 					requestAnimationFrame( animate );
