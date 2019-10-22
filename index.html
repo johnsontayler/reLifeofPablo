@@ -45,9 +45,13 @@
 				overlay.remove();
 			});
 
-			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 			camera.position.z = 20;
+
+			var listener = new THREE.AudioListener();
+			camera.add( listener );
+
+			var scene = new THREE.Scene();
 
 			var geometry = new THREE.BoxGeometry( 10, 1, 15 );
 			var cubeMaterials = 
@@ -62,9 +66,6 @@
 			var material = new THREE.MeshFaceMaterial( cubeMaterials );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
-
-			var listener = new THREE.AudioListener();
-			camera.add( listener );
 
 			var sound = new THREE.Audio( listener );
 
