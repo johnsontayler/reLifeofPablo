@@ -99,11 +99,10 @@
 				document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 32) {
+						i += 1;
 						if (i == pabloSong.length) {
 							i = 0;
-						} else {
-							i += 1;
-						}
+						} 
 						sound.stop();
 						changeAudioLoader();
 					}
