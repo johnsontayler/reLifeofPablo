@@ -11,7 +11,7 @@
 		<div id="overlay">
 			<div id="info">
 				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1" target="_blank" rel="noopener">Kanye West</a><br/>
-				navigate with arrows / mouse
+				navigate stage with arrows or mouse | change songs with spacebar
 			</div>
 			<div>
 				<button id="startButton">Click to Resurrect</button>
@@ -35,11 +35,10 @@
 									i =  0;
 								}
 							}
-				}, 1500);
+				}, 1000);
 			};
 
 			var startButton = document.getElementById( 'startButton' );
-
 			startButton.addEventListener( 'click', function () {
 				var overlay = document.getElementById( 'overlay' );
 				overlay.remove();
@@ -69,16 +68,46 @@
 				scene.add( cube );
 	
 				var sound = new THREE.PositionalAudio( listener );
-	
-				var audioLoader = new THREE.AudioLoader();
-				audioLoader.load( 'audio/Ultralight-Beam.ogg', function( buffer ) {
-					sound.setBuffer( buffer );
-					sound.setLoop(true);
-					sound.setVolume(4.5);
-					sound.play();
-				});
+				
+				let i = 0;
+				var changeAudioLoader = function () {
+					pabloSong = 
+					[
+					'audio/1 Ultralight Beam.ogg',
+					'audio/2 Father Stretch.ogg',
+					'audio/3 Pt. 2.ogg',
+					'audio/4 Famous.ogg',
+					'audio/5 Feedback.ogg',
+					'audio/6 Low Lights.ogg',
+					'audio/7 Highlights.ogg',
+					'audio/8 Freestyle.ogg',
+					'audio/9 Waves.ogg',
+					'audio/10 FML.ogg',
+					]
+					var audioLoader = new THREE.AudioLoader();
+					
+					audioLoader.load( pabloSong[i], function( buffer ) {
+						sound.setBuffer( buffer );
+						sound.setLoop(true);
+						sound.setVolume(4.5);
+						sound.play();
+					});
+				};
 				
 				cube.add( sound );
+
+				document.addEventListener( 'keydown', function (e)
+				{
+					if(e.keyCode == 32) {
+						if (i == pabloSong.length) {
+							i = 0;
+						} else {
+							i += 1
+						}
+						sound.stop();
+						changeAudioLoader();
+					}
+				});
 				
 				var renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -105,6 +134,7 @@
 				};
 	
 				animate();
+				changeAudioLoader();
 			});
 
 			changeButtonText();
