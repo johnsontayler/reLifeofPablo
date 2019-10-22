@@ -54,3 +54,10 @@ a {
 a:hover {
   text-decoration: line-through;
 }
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
