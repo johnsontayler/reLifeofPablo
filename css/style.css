@@ -9,12 +9,12 @@
   align-items: center;
   justify-content: center;
   opacity: 1;
-  background-color: #000000;
+  background-color: #F88C52;
   text-align: center;
 }
 
 #overlay > div > p {
-  color: #777777;
+  color: black;
   font-size: 40px;
 }
 
@@ -22,15 +22,15 @@
   height: 25px;
   width: 150px;
   background: transparent;
-  color: #ffffff;
-  outline: 1px solid #ffffff;
+  color: black;
+  outline: 1px solid black;
   border: 0px;
   cursor: pointer;
 }
 
 #overlay > div > button:hover {
-  color: rgb(240, 181, 20);
-  outline: 1px solid rgb(240, 181, 20);
+  color: white;
+  outline: 1px solid black;
 }
 
 #info {
@@ -42,22 +42,15 @@
   font-family: Monospace;
   font-size: 13px;
   line-height: 24px;
-  color: white;
+  color: black;
   align-items: center;
 }
 
 a {
-  color: rgb(240, 181, 20);
+  color: white;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: line-through;
-}
-
-.dropdown {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
 }
