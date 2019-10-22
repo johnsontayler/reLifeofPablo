@@ -10,7 +10,6 @@
   justify-content: center;
   opacity: 1;
   background-color: #000000;
-  color: #ffffff;
   text-align: center;
 }
 
@@ -36,23 +35,22 @@
 
 #info {
   position: absolute;
+  z-index: 2;
   top: 0px;
   width: 100%;
   padding: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  pointer-events: none;
-  z-index: 1;
   font-family: Monospace;
   font-size: 13px;
   line-height: 24px;
+  color: white;
+  align-items: center;
 }
 
 a {
   color: rgb(240, 181, 20);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: line-through;
 }

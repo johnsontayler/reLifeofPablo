@@ -9,15 +9,14 @@
 	</head>
 	<body>
 		<div id="overlay">
+			<div id="info">
+				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1" target="_blank" rel="noopener">Kanye West</a><br/>
+				navigate with arrows / mouse
+			</div>
 			<div>
 				<button id="startButton">Click to Resurrect</button>
 				<p>THE LIFE OF PABLO</p>
 			</div>
-			<div id="info">
-					Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a><br/>
-					music by <a href="https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1" target="_blank" rel="noopener">Kanye West</a><br/>
-					navigate with WASD / arrows / mouse
-				</div>
 		</div>
 		<script src="js/three.js"></script>
 		<script src="js/OrbitControls.js"></script>
@@ -40,69 +39,75 @@
 			};
 
 			var startButton = document.getElementById( 'startButton' );
+
 			startButton.addEventListener( 'click', function () {
 				var overlay = document.getElementById( 'overlay' );
 				overlay.remove();
+
+				var context = new AudioContext();
+
+				var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+				camera.position.z = 20;
+	
+				var listener = new THREE.AudioListener();
+				camera.add( listener );
+	
+				var scene = new THREE.Scene();
+	
+				var geometry = new THREE.BoxGeometry( 10, 1, 15 );
+				var cubeMaterials = 
+				[
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // RIGHT SIDE
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // LEFT SIDE
+					new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'img/2.png' ), side: THREE.FrontSide } ), // TOP SIDE
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BOTTOM SIDE
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // FRONT SIDE
+					new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BACK SIDE
+				]
+				var material = new THREE.MeshFaceMaterial( cubeMaterials );
+				var cube = new THREE.Mesh( geometry, material );
+				scene.add( cube );
+	
+				var sound = new THREE.PositionalAudio( listener );
+	
+				var audioLoader = new THREE.AudioLoader();
+				audioLoader.load( 'audio/Ultralight-Beam.ogg', function( buffer ) {
+					sound.setBuffer( buffer );
+					sound.setLoop(true);
+					sound.setVolume(4.5);
+					sound.play();
+				});
+				
+				cube.add( sound );
+				
+				var renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+				
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
+				
+				window.addEventListener( 'resize', function ( )
+				{
+					var width = window.innerWidth;
+					var height = window.innerHeight;
+					renderer.setSize( width, height );
+					camera.aspect = width / height;
+					camera.updateProjectionMatrix( );
+				});
+
+				var animate = function () {
+					requestAnimationFrame( animate );
+	
+					cube.rotation.x += 0;
+					cube.rotation.y += 0;
+	
+					renderer.render( scene, camera );
+				};
+	
+				animate();
 			});
 
-			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-			camera.position.z = 20;
-
-			var listener = new THREE.AudioListener();
-			camera.add( listener );
-
-			var scene = new THREE.Scene();
-
-			var geometry = new THREE.BoxGeometry( 10, 1, 15 );
-			var cubeMaterials = 
-			[
-				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // RIGHT SIDE
-				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // LEFT SIDE
-				new THREE.MeshPhongMaterial( { map: new THREE.TextureLoader( ).load( 'img/2.png' ), side: THREE.FrontSide } ), // TOP SIDE
-				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BOTTOM SIDE
-				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // FRONT SIDE
-				new THREE.MeshBasicMaterial( { color: 0x00ff00, wireframe: true, side: THREE.DoubleSide } ), // BACK SIDE
-			]
-			var material = new THREE.MeshFaceMaterial( cubeMaterials );
-			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
-
-			var sound = new THREE.Audio( listener );
-
-			var audioLoader = new THREE.AudioLoader();
-			audioLoader.load( 'audio/Ultralight-Beam.ogg', function( buffer ) {
-				sound.setBuffer( buffer );
-				sound.setLoop(true);
-				sound.setVolume(0.5);
-				sound.play();
-			});
-
-			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
-
-			window.addEventListener( 'resize', function ( )
-			{
-				var width = window.innerWidth;
-				var height = window.innerHeight;
-				renderer.setSize( width, height );
-				camera.aspect = width / height;
-				camera.updateProjectionMatrix( );
-			});
-
-			controls = new THREE.OrbitControls( camera, renderer.domElement );
-
-			var animate = function () {
-				requestAnimationFrame( animate );
-
-				cube.rotation.x += 0;
-				cube.rotation.y += 0;
-
-				renderer.render( scene, camera );
-			};
-			
 			changeButtonText();
-			animate();
 		</script>
 	</body>
 </html>
