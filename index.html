@@ -1,6 +1,11 @@
 <html>
 	<head>
-		<title>My first three.js app</title>
+		<title>reLifeofPablo</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="An interactive web app to relive The Life of Pablo, Kanye West's greatest concert experience.">
+		<meta name="keywords" content="Kanye West, Kanye, Yeezy, TLOP, The Life of Pablo, Three JS, Best Concert, Best Album, JavaScript">
+		<meta name="author" content="Tayler Evan Johnson">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<style>
 			body { margin: 0; }
@@ -10,12 +15,50 @@
 	<body>
 		<div id="overlay">
 			<div id="info">
-				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1" target="_blank" rel="noopener">Kanye West</a><br/>
+				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x" target="_blank" rel="noopener">Kanye West</a><br/>
 				navigate stage with arrows or mouse | change songs with spacebar
 			</div>
-			<div>
+			<div id=pabloTitle>
 				<button id="startButton">Click to Resurrect</button>
 				<p>THE LIFE OF PABLO</p>
+			</div>
+		</div>
+		<div id="dropdown" style="position: absolute; top: 0; left: 0; color: white;">
+			<div class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				WHICH / ONE
+			</div>
+			<div class="dropdown-menu scroll-menu" aria-labelledby="dropdownMenuButton">
+				<a class="dropdown-item" id="setlistMenu1" href="#">Father Stretch My Hands, Pt. 1</a>
+				<a class="dropdown-item" id="setlistMenu2" href="#">Pt. 2</a>
+				<a class="dropdown-item" id="setlistMenu3" href="#">Famous</a>
+				<a class="dropdown-item" id="setlistMenu4" href="#">Pop Style</a>
+				<a class="dropdown-item" id="setlistMenu5" href="#">That Part</a>
+				<a class="dropdown-item" id="setlistMenu6" href="#">Facts</a>
+				<a class="dropdown-item" id="setlistMenu7" href="#">Mercy</a>
+				<a class="dropdown-item" id="setlistMenu8" href="#">I Don't Like</a>
+				<a class="dropdown-item" id="setlistMenu9" href="#">All Day</a>
+				<a class="dropdown-item" id="setlistMenu10" href="#">Black Skinhead</a>
+				<a class="dropdown-item" id="setlistMenu11" href="#">Can't Tell Me Nothing</a>
+				<a class="dropdown-item" id="setlistMenu12" href="#">Niggas in Paris</a>
+				<a class="dropdown-item" id="setlistMenu13" href="#">Power</a>
+				<a class="dropdown-item" id="setlistMenu14" href="#">Blood on the Leaves</a>
+				<a class="dropdown-item" id="setlistMenu15" href="#">Freestyle 4</a>
+				<a class="dropdown-item" id="setlistMenu16" href="#">Jesus Walks</a>
+				<a class="dropdown-item" id="setlistMenu17" href="#">Flashing Lights</a>
+				<a class="dropdown-item" id="setlistMenu18" href="#">Highlights</a>
+				<a class="dropdown-item" id="setlistMenu19" href="#">Feedback</a>
+				<a class="dropdown-item" id="setlistMenu20" href="#">Wolves</a>
+				<a class="dropdown-item" id="setlistMenu21" href="#">Heartless</a>
+				<a class="dropdown-item" id="setlistMenu22" href="#">Runaway</a>
+				<a class="dropdown-item" id="setlistMenu23" href="#">Only One</a>
+				<a class="dropdown-item" id="setlistMenu24" href="#">I Love Kanye</a>
+				<a class="dropdown-item" id="setlistMenu25" href="#">Waves</a>
+				<a class="dropdown-item" id="setlistMenu26" href="#">Touch the Sky</a>
+				<a class="dropdown-item" id="setlistMenu27" href="#">All of the Lights</a>
+				<a class="dropdown-item" id="setlistMenu28" href="#">Good Life</a>
+				<a class="dropdown-item" id="setlistMenu29" href="#">Stronger</a>
+				<a class="dropdown-item" id="setlistMenu30" href="#">Fade</a>
+				<a class="dropdown-item" id="setlistMenu31" href="#">Ultralight Beam</a>
 			</div>
 		</div>
 		<script src="js/three.js"></script>
@@ -36,6 +79,30 @@
 								}
 							}
 				}, 1000);
+			};
+
+			var changePabloTitle = function () {
+				var title = [
+					"<p>THE LIFE OF PABLO</p>", 
+					"<p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p>", 
+					"<p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p>", 
+					"<p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p><p>THE LIFE OF PABLO</p>", 
+				];
+
+				var pabloTitleDiv = document.getElementById("pabloTitle");
+				console.log(pabloTitleDiv);
+
+				let x = 0;
+				setInterval(function() {
+							if (pabloTitleDiv) {
+								pabloTitleDiv.removeChild(pabloTitleDiv.lastChild);
+								pabloTitleDiv.insertAdjacentHTML('beforeend', title[x]);
+								x += 1;
+								if (x == title.length) {
+									x =  0;
+								}
+							}
+				}, 1500);
 			};
 
 			var startButton = document.getElementById( 'startButton' );
@@ -73,19 +140,40 @@
 				var changeAudioLoader = function () {
 					pabloSong = 
 					[
-					'audio/1 Ultralight Beam.ogg',
-					'audio/2 Father Stretch.ogg',
-					'audio/3 Pt. 2.ogg',
-					'audio/4 Famous.ogg',
-					'audio/5 Feedback.ogg',
-					'audio/6 Low Lights.ogg',
-					'audio/7 Highlights.ogg',
-					'audio/8 Freestyle.ogg',
-					'audio/9 Waves.ogg',
-					'audio/10 FML.ogg',
+					'audio/0 Father.ogg',
+					'audio/1 Pt. 2.ogg',
+					'audio/2 Famous.ogg',
+					'audio/3 Pop.ogg',
+					'audio/4 That Part.ogg',
+					'audio/5 Facts.ogg',
+					'audio/6 Mercy.ogg',
+					'audio/7 Dont Like.ogg',
+					'audio/8 All Day.ogg',
+					'audio/9 Black Skinhead.ogg',
+					'audio/10 Niggas.ogg',
+					'audio/11 Cant Tell.ogg',
+					'audio/12 Power.ogg',
+					'audio/13 Blood.ogg',
+					'audio/14 Freestyle.ogg',
+					'audio/15 Jesus Walks.ogg',
+					'audio/16 Flashing.ogg',
+					'audio/17 Highlights.ogg',
+					'audio/18 Feedback.ogg',
+					'audio/19 Wolves.ogg',
+					'audio/20 Heartless.ogg',
+					'audio/21 Runaway.ogg',
+					'audio/22 Only One.ogg',
+					'audio/23 I Love.ogg',
+					'audio/24 Waves.ogg',
+					'audio/25 All Lights.ogg',
+					'audio/26 Good Life.ogg',
+					'audio/27 Stronger.ogg',
+					'audio/28 Touch Sky.ogg',
+					'audio/29 Fade.ogg',
+					'audio/30 Ultralight.ogg',
 					]
+
 					var audioLoader = new THREE.AudioLoader();
-					
 					audioLoader.load( pabloSong[yzy], function( buffer ) {
 						console.log(pabloSong[yzy]);
 						sound.setBuffer( buffer );
@@ -108,7 +196,18 @@
 						changeAudioLoader();
 					}
 				});
-				
+
+				if (sound) {
+					var setlistDropdown = document.getElementsByClassName("dropdown-item");
+					Array.from(setlistDropdown).forEach(function(song, index){
+						song.addEventListener( 'click', function() {
+							yzy = index;
+							sound.stop();
+							changeAudioLoader();
+						});
+					});
+				};
+
 				var renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				document.body.appendChild( renderer.domElement );
@@ -136,8 +235,10 @@
 				animate();
 				changeAudioLoader();
 			});
-
 			changeButtonText();
 		</script>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	</body>
 </html>
