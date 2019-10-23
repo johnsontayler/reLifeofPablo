@@ -140,19 +140,27 @@
 				var changeAudioLoader = function () {
 					pabloSong = 
 					[
-					'audio/1 Ultralight Beam.ogg',
-					'audio/2 Father Stretch.ogg',
-					'audio/3 Pt. 2.ogg',
-					'audio/4 Famous.ogg',
-					'audio/5 Feedback.ogg',
-					'audio/6 Low Lights.ogg',
+					'audio/0 Father.ogg',
+					'audio/1 Pt. 2.ogg',
+					'audio/2 Famous.ogg',
+					'audio/3 Pop.ogg',
+					'audio/5 Facts.ogg',
+					'audio/6 Low.ogg',
 					'audio/7 Highlights.ogg',
-					'audio/8 Freestyle.ogg',
+					'audio/8 All Day.ogg',
 					'audio/9 Waves.ogg',
-					'audio/10 FML.ogg',
+					'audio/10 Niggas.ogg',
+					'audio/11 Cant Tell.ogg',
+					'audio/13 Blood.ogg',
+					'audio/14 Freestyle.ogg',
+					'audio/15 Jesus Walks.ogg',
+					'audio/18 Feedback.ogg',
+					'audio/23 I Love.ogg',
+					'audio/29 Fade.ogg',
+					'audio/30 Ultralight.ogg',
 					]
+
 					var audioLoader = new THREE.AudioLoader();
-					
 					audioLoader.load( pabloSong[yzy], function( buffer ) {
 						console.log(pabloSong[yzy]);
 						sound.setBuffer( buffer );
@@ -176,14 +184,14 @@
 					}
 				});
 
-				var setlistMenu1 = document.querySelector('#setlistMenu1');
-
-				if (setlistMenu1) {
-					setlistMenu1.addEventListener( 'click', function() {
-						yzy = 1;
-						console.log('yzy=' + yzy);
-						sound.stop();
-						changeAudioLoader();
+				if (sound) {
+					var setlistDropdown = document.getElementsByClassName("dropdown-item");
+					Array.from(setlistDropdown).forEach(function(song, index){
+						song.addEventListener( 'click', function() {
+							yzy = index;
+							sound.stop();
+							changeAudioLoader();
+						});
 					});
 				};
 
