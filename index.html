@@ -153,11 +153,18 @@
 					}
 				);
 
+				var gaFloor = new THREE.Mesh(
+					new THREE.PlaneGeometry(720, 720, 30, 24),
+					new THREE.MeshBasicMaterial({color: 0x323330, wireframe: true})
+				)
+				gaFloor.position.set(0, -20, 0);
+				gaFloor.rotation.x = Math.PI / 2;
+				scene.add(gaFloor);
+
 				var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
 				scene.add( directionalLight );
-	
+
 				var sound = new THREE.PositionalAudio( listener );
-				
 				let yzy = 0;
 				var changeAudioLoader = function () {
 					pabloSong = 
@@ -204,7 +211,6 @@
 						sound.play()
 					});
 				};
-				
 				cube.add( sound );
 
 				document.addEventListener( 'keydown', function (e)
@@ -246,12 +252,21 @@
 				});
 
 				var animate = function () {
-					requestAnimationFrame( animate );
+					renderer.render( scene, camera );
 	
-					cube.rotation.x += 0;
+					var firsttargetPositionX = 60;
+					if (cube.position.x <= targetPositionX) {
+						cube.position.x += 1;
+					}
+
+					var firsttargetPositionX = 60;
+					if (cube.position.x <= targetPositionX) {
+						cube.position.x += 1;
+					}
+
 					cube.rotation.y += 0;
 	
-					renderer.render( scene, camera );
+					requestAnimationFrame( animate );
 				};
 	
 				animate();
