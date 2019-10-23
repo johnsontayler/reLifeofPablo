@@ -24,9 +24,10 @@
   width: 200px;
   background: transparent;
   color: black;
-  outline: 1px solid black;
+  outline: 2px solid black;
   border: 0px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 #overlay > div > button:hover {
