@@ -15,7 +15,7 @@
 	<body>
 		<div id="overlay">
 			<div id="info">
-				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/album/7gsWAHLeT0w7es6FofOXk1" target="_blank" rel="noopener">Kanye West</a><br/>
+				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x" target="_blank" rel="noopener">Kanye West</a><br/>
 				navigate stage with arrows or mouse | change songs with spacebar
 			</div>
 			<div id=pabloTitle>
@@ -28,37 +28,37 @@
 				WHICH / ONE
 			</div>
 			<div class="dropdown-menu scroll-menu" aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Father Stretch My Hands, Pt. 1</a>
-				<a class="dropdown-item" href="#">Pt. 2</a>
-				<a class="dropdown-item" href="#">Famous</a>
-				<a class="dropdown-item" href="#">Pop Style</a>
-				<a class="dropdown-item" href="#">That Part</a>
-				<a class="dropdown-item" href="#">Facts</a>
-				<a class="dropdown-item" href="#">Mercy</a>
-				<a class="dropdown-item" href="#">I Don't Like</a>
-				<a class="dropdown-item" href="#">All Day</a>
-				<a class="dropdown-item" href="#">Black Skinhead</a>
-				<a class="dropdown-item" href="#">Can't Tell Me Nothing</a>
-				<a class="dropdown-item" href="#">Niggas in Paris</a>
-				<a class="dropdown-item" href="#">Power</a>
-				<a class="dropdown-item" href="#">Blood on the Leaves</a>
-				<a class="dropdown-item" href="#">Freestyle 4</a>
-				<a class="dropdown-item" href="#">Jesus Walks</a>
-				<a class="dropdown-item" href="#">Flashing Lights</a>
-				<a class="dropdown-item" href="#">Highlights</a>
-				<a class="dropdown-item" href="#">Feedback</a>
-				<a class="dropdown-item" href="#">Wolves</a>
-				<a class="dropdown-item" href="#">Heartless</a>
-				<a class="dropdown-item" href="#">Runaway</a>
-				<a class="dropdown-item" href="#">Only One</a>
-				<a class="dropdown-item" href="#">I Love Kanye</a>
-				<a class="dropdown-item" href="#">Waves</a>
-				<a class="dropdown-item" href="#">Touch the Sky</a>
-				<a class="dropdown-item" href="#">All of the Lights</a>
-				<a class="dropdown-item" href="#">Good Life</a>
-				<a class="dropdown-item" href="#">Stronger</a>
-				<a class="dropdown-item" href="#">Fade</a>
-				<a class="dropdown-item" href="#">Ultralight Beam</a>
+				<a class="dropdown-item" id="setlistMenu1" href="#">Father Stretch My Hands, Pt. 1</a>
+				<a class="dropdown-item" id="setlistMenu2" href="#">Pt. 2</a>
+				<a class="dropdown-item" id="setlistMenu3" href="#">Famous</a>
+				<a class="dropdown-item" id="setlistMenu4" href="#">Pop Style</a>
+				<a class="dropdown-item" id="setlistMenu5" href="#">That Part</a>
+				<a class="dropdown-item" id="setlistMenu6" href="#">Facts</a>
+				<a class="dropdown-item" id="setlistMenu7" href="#">Mercy</a>
+				<a class="dropdown-item" id="setlistMenu8" href="#">I Don't Like</a>
+				<a class="dropdown-item" id="setlistMenu9" href="#">All Day</a>
+				<a class="dropdown-item" id="setlistMenu10" href="#">Black Skinhead</a>
+				<a class="dropdown-item" id="setlistMenu11" href="#">Can't Tell Me Nothing</a>
+				<a class="dropdown-item" id="setlistMenu12" href="#">Niggas in Paris</a>
+				<a class="dropdown-item" id="setlistMenu13" href="#">Power</a>
+				<a class="dropdown-item" id="setlistMenu14" href="#">Blood on the Leaves</a>
+				<a class="dropdown-item" id="setlistMenu15" href="#">Freestyle 4</a>
+				<a class="dropdown-item" id="setlistMenu16" href="#">Jesus Walks</a>
+				<a class="dropdown-item" id="setlistMenu17" href="#">Flashing Lights</a>
+				<a class="dropdown-item" id="setlistMenu18" href="#">Highlights</a>
+				<a class="dropdown-item" id="setlistMenu19" href="#">Feedback</a>
+				<a class="dropdown-item" id="setlistMenu20" href="#">Wolves</a>
+				<a class="dropdown-item" id="setlistMenu21" href="#">Heartless</a>
+				<a class="dropdown-item" id="setlistMenu22" href="#">Runaway</a>
+				<a class="dropdown-item" id="setlistMenu23" href="#">Only One</a>
+				<a class="dropdown-item" id="setlistMenu24" href="#">I Love Kanye</a>
+				<a class="dropdown-item" id="setlistMenu25" href="#">Waves</a>
+				<a class="dropdown-item" id="setlistMenu26" href="#">Touch the Sky</a>
+				<a class="dropdown-item" id="setlistMenu27" href="#">All of the Lights</a>
+				<a class="dropdown-item" id="setlistMenu28" href="#">Good Life</a>
+				<a class="dropdown-item" id="setlistMenu29" href="#">Stronger</a>
+				<a class="dropdown-item" id="setlistMenu30" href="#">Fade</a>
+				<a class="dropdown-item" id="setlistMenu31" href="#">Ultralight Beam</a>
 			</div>
 		</div>
 		<script src="js/three.js"></script>
@@ -175,7 +175,18 @@
 						changeAudioLoader();
 					}
 				});
-				
+
+				var setlistMenu1 = document.querySelector('#setlistMenu1');
+
+				if (setlistMenu1) {
+					setlistMenu1.addEventListener( 'click', function() {
+						yzy = 1;
+						console.log('yzy=' + yzy);
+						sound.stop();
+						changeAudioLoader();
+					});
+				};
+
 				var renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				document.body.appendChild( renderer.domElement );
@@ -203,7 +214,6 @@
 				animate();
 				changeAudioLoader();
 			});
-
 			changeButtonText();
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
