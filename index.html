@@ -133,7 +133,7 @@
 				]
 				var material = new THREE.MeshFaceMaterial( cubeMaterials );
 				var cube = new THREE.Mesh( geometry, material );
-				cube.position.set(0, 10, 0);
+				cube.position.set(0, 5, 0);
 				scene.add( cube );
 
 				var loader = new THREE.GLTFLoader();
@@ -254,17 +254,12 @@
 				var animate = function () {
 					renderer.render( scene, camera );
 	
-					var firsttargetPositionX = 60;
-					if (cube.position.x <= targetPositionX) {
-						cube.position.x += 1;
-					}
+					var targetPositionY = 15;
 
-					var firsttargetPositionX = 60;
-					if (cube.position.x <= targetPositionX) {
-						cube.position.x += 1;
+					if (cube.position.y <= targetPositionY) {
+						cube.position.x += 0;
+						cube.position.y += 0.04;
 					}
-
-					cube.rotation.y += 0;
 	
 					requestAnimationFrame( animate );
 				};
