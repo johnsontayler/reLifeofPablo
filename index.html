@@ -216,6 +216,7 @@
 
 				// CONTROLS // 
 				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.maxPolarAngle = Math.PI/2; 
 
 				var skipSong = document.addEventListener( 'keydown', function (e)
 				{
