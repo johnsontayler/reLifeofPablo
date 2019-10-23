@@ -62,6 +62,12 @@ a:hover {
   background: transparent;
 }
 
+.scroll-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
 .dropdown-item {
   color: white;
 }
