@@ -59,6 +59,10 @@ a:hover {
   text-decoration: line-through;
 }
 
+a:active, a:focus {
+  text-decoration: none!important;;
+}
+
 .dropdown-menu {
   background: transparent;
 }
