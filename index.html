@@ -84,6 +84,7 @@
 			import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 			import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
+			import { FBXLoader } from '/node_modules/three/examples/jsm/loaders/FBXLoader.js';
 
 			var changeButtonText = function () {
 				var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
@@ -127,12 +128,24 @@
 				var context = new AudioContext();
 
 				var camera = new THREE.PerspectiveCamera( 50, window.innerWidth/window.innerHeight, 0.1, 1000 );
-				camera.position.set( 95, 45, 0 );
+				camera.position.set( 120, 45, 0 );
 	
 				var listener = new THREE.AudioListener();
 				camera.add( listener );
 	
 				var scene = new THREE.Scene();
+
+				var kanyeLoader = new FBXLoader();
+				kanyeLoader.load( 'models/liam.fbx', function ( object ) {
+						// mixer = new THREE.AnimationMixer( object );
+						// var action = mixer.clipAction( object.animations[ 0 ] );
+						// action.play();
+						object.castShadow = true;
+						object.receiveShadow = true;
+						object.scale.set( 0.08, 0.08, 0.08 )
+						object.position.y = 3.5;
+						stage.add( object );
+				} );
 	
 				// STAGE // 
 				var geometry = new THREE.BoxGeometry( 60, 6, 90 );
@@ -148,6 +161,7 @@
 				var material = new THREE.MeshFaceMaterial( cubeMaterials );
 				var stage = new THREE.Mesh( geometry, material );
 				stage.position.set( -80, 15, -100 );
+				stage.receiveShadow = true;
 				scene.add( stage );
 				// STAGE //
 
@@ -171,6 +185,14 @@
 				// LIGHTING // 
 				var directionalLight = new THREE.DirectionalLight( 0x655e66 );
 				scene.add( directionalLight );
+
+				// var kanyeSpotLight = new THREE.SpotLight( 0xa71919 );
+				// kanyeSpotLight.position.set( 10, 140, 40);
+				// kanyeSpotLight.angle = 0.2;
+				// scene.add( kanyeSpotLight );
+
+				// var kanyeSpotLightHelper = new THREE.SpotLightHelper( kanyeSpotLight );
+				// scene.add( kanyeSpotLightHelper );
 
 				var stageLight = new THREE.SpotLight( 0xf98125, 2 );
 				stageLight.position.set( 0, 150, 0 );
