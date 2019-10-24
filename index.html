@@ -112,15 +112,15 @@
 
 				var aboutLink = document.getElementById('about');
 				aboutLink.addEventListener( 'click', function() {
-					var firstBodyDiv = document.querySelector('#overlay');
+					var firstBodyDiv = document.getElementById('dropdown');
 					var aboutOverlay = `		
 					<div id="overlayAbout">
 						<div id="aboutInfo">
 							<i class="fas fa-times" id="exitOverlayAbout"></i>
-							<p>This is all about reLifeofPablo -- the greated Kanye fan web app ever.</p>
+							<p>This is all about reLifeofPablo -- the greatest Kanye fan web app ever.</p>
 						</div>
 					</div>`;
-					firstBodyDiv.insertAdjacentHTML( 'afterend', aboutOverlay );
+					firstBodyDiv.insertAdjacentHTML( 'beforebegin', aboutOverlay );
 				});
 
 				var array30 = new Array(30);
