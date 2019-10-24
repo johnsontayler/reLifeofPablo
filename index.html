@@ -98,6 +98,8 @@
 				var overlay = document.getElementById( 'overlay' );
 				overlay.remove();
 
+				var array30 = new Array(30);
+
 				var MODELS = [ { name: "audience" } ];
 
 				var UNITS = [
@@ -105,130 +107,11 @@
 						modelName: "audience", // Will use the 3D model from file models/audience.gltf
 						position: { x: 0, y: -20, z: 0 }, // Where to put the unit in the scene
 						scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
-					},
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsPositive(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsXNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
-					create30UnitsYNegative(),
+					}
 				];
 
 				var numLoadedModels = 0;
+				createUnits();
 				loadModels();
 
 				var context = new AudioContext();
@@ -449,40 +332,55 @@
 				};
 				// ANIMATION //
 
+				function createUnits() {
+					create30UnitsPositive();
+					create30UnitsNegative();
+					create30UnitsXNegative();
+					create30UnitsYNegative();
+				} 
+
 				function create30UnitsPositive() {
-					var createdUnit = {
-						modelName: "audience", // Will use the 3D model from file models/audience.gltf
-						position: randomUnitPositionPositive(), // Where to put the unit in the scene
-						scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
-					}
-					return createdUnit;
+					Array.from(array30).forEach(function() {
+						var createdUnit = {
+							modelName: "audience", // Will use the 3D model from file models/audience.gltf
+							position: randomUnitPositionPositive(), // Where to put the unit in the scene
+							scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
+						}
+						UNITS.push(createdUnit);
+					});
 				}
 
 				function create30UnitsNegative() {
-					var createdUnit = {
-						modelName: "audience", // Will use the 3D model from file models/audience.gltf
-						position: randomUnitPositionNegative(), // Where to put the unit in the scene
-						scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
-					}
-					return createdUnit;
+					Array.from(array30).forEach(function() {
+						var createdUnit = {
+							modelName: "audience", // Will use the 3D model from file models/audience.gltf
+							position: randomUnitPositionNegative(), // Where to put the unit in the scene
+							scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
+						}
+						UNITS.push(createdUnit);
+					});
 				}
 
 				function create30UnitsXNegative() {
-					var createdUnit = {
-						modelName: "audience", // Will use the 3D model from file models/audience.gltf
-						position: randomUnitPositionXNeg(), // Where to put the unit in the scene
-						scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
-					}
-					return createdUnit;
+					Array.from(array30).forEach(function() {
+						var createdUnit = {
+							modelName: "audience", // Will use the 3D model from file models/audience.gltf
+							position: randomUnitPositionXNeg(), // Where to put the unit in the scene
+							scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
+						}
+						UNITS.push(createdUnit);
+					});
 				}
 
 				function create30UnitsYNegative() {
-					var createdUnit = {
-						modelName: "audience", // Will use the 3D model from file models/audience.gltf
-						position: randomUnitPositionYNeg(), // Where to put the unit in the scene
-						scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
-					}
-					return createdUnit;
+					Array.from(array30).forEach(function() {
+						var createdUnit = {
+							modelName: "audience", // Will use the 3D model from file models/audience.gltf
+							position: randomUnitPositionYNeg(), // Where to put the unit in the scene
+							scale: 0.2 // Scaling of the unit. 1.0 means: use original size, 0.1 means "10 times smaller", etc.
+						}
+						UNITS.push(createdUnit);
+					});
 				}
 
 				function randomUnitPositionPositive() {
