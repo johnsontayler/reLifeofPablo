@@ -79,15 +79,14 @@ a:active, a:focus {
   justify-content: center;
   opacity: 1;
   background-color: black;
-  opacity: 0.5;
+  opacity: 0.8;
   text-align: center;
   font-weight: bold;
 }
 
 #aboutInfo {
-  /* position: absolute;
+  position: absolute;
   z-index: 2;
-  top: 0; */
   width: 100%;
   padding: 10px;
   font-family: Helvetica;
@@ -97,11 +96,17 @@ a:active, a:focus {
   align-items: center;
 }
 
+#aboutInfo > p {
+  position: absolute;
+  z-index: 2;
+}
+
 #exitOverlayAbout {
   position: absolute;
   z-index: 2;
-  top: 0;
-  right: 0;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
 }
 
 .dropdown-menu {
