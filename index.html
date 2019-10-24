@@ -84,7 +84,6 @@
 			import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 			import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
-			import { GUI } from '/node_modules/three/examples/jsm/libs/dat.gui.module.js';
 
 			var changeButtonText = function () {
 				var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
@@ -131,7 +130,7 @@
 				camera.position.set( 95, 45, 0 );
 	
 				var listener = new THREE.AudioListener();
-				camera.add( listener );
+				camera.add( listener.min( 10 ).max( 15 ).onChange );
 	
 				var scene = new THREE.Scene();
 	
@@ -279,17 +278,6 @@
 						changeAudioLoader();
 					}
 				});
-
-				var SoundControls = function () {
-					this.master = listener.getMasterVolume();
-				};
-
-				var gui = new GUI();
-				var soundControls = new SoundControls();
-				var volumeFolder = gui.addFolder( 'sound volume' );
-				volumeFolder.add( soundControls, 'master' ).min( 10 ).max( 20 ).onChange( function () {
-					listener.setMasterVolume( soundControls.master );
-				} );
 
 				var stageRight = document.addEventListener( 'keydown', function (e)
 				{
