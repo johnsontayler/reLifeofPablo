@@ -279,27 +279,41 @@
 				var directionalLight = new THREE.DirectionalLight( 0x655e66 );
 				scene.add( directionalLight );
 
-				var stageLight = new THREE.SpotLight( 0xf98125, 2 );
-				stageLight.castShadow = false;
-				stageLight.angle = 0.8;
-				stageLight.penumbra = 0.1;
-				stageLight.decay = 1;
-				stageLight.distance = 200;
-				stageLight.position.set( 0, 25, 5 );
+				// var stageLight = new THREE.SpotLight( 0xf98125, 2 );
+				// stageLight.angle = 0.2;
+				// stageLight.penumbra = 0.2;
+				// stageLight.decay = 1;
+				// stageLight.distance = 200;
+				// stageLight.position.set( 0, 15, 30 );
+				// stageLight.target.position.set(stage.position.x, 1.8, stage.position.y );
 
-				var yeezyLight = new THREE.SpotLight( 0xf98125, 2 );
-				yeezyLight.castShadow = true;
-				yeezyLight.angle = 0.4;
-				yeezyLight.penumbra = 0.05;
-				yeezyLight.decay = 1;
-				yeezyLight.distance = 200;
-				yeezyLight.position.set( 0, 90, -35 );
+				var stageLight2 = new THREE.SpotLight( 0xf98125, 2 );
+				stageLight2.position.set( 0, 150, 0 );
+				stageLight2.angle = 0.5;
+				stageLight2.penumbra = 0.4;
+				// stageLight.angle = 0.2;
+				// stageLight.penumbra = 0.2;
+				// stageLight.decay = 1;
+				// stageLight.distance = 200;
+				// stageLight.position.set( 0, 15, 15 );
+				// stageLight.target.position.set(stage.position.x, 1.8, stage.position.y );
 
-				stage.add( stageLight, yeezyLight );
+				// var yeezyLight = new THREE.SpotLight( 0xf98125, 2 );
+				// yeezyLight.castShadow = true;
+				// yeezyLight.angle = 0.4;
+				// yeezyLight.penumbra = 0.05;
+				// yeezyLight.decay = 1;
+				// yeezyLight.distance = 200;
+				// yeezyLight.position.set( 0, 90, -35 );
 
-				var spotLightHelper = new THREE.SpotLightHelper( stageLight );
+				scene.add( stageLight2 );
+				//scene.add( stageLight.target );
+				// stage.add( stageLight, yeezyLight );
+
+				//var spotLightHelper = new THREE.SpotLightHelper( stageLight );
+				var spotLightHelper2 = new THREE.SpotLightHelper( stageLight2 );
 				//var spotLightHelper2 = new THREE.SpotLightHelper( yeezyLight );
-				stage.add( spotLightHelper);
+				scene.add( spotLightHelper2 );
 				// LIGHTING // 
 
 				// MUSIC // 
@@ -433,7 +447,7 @@
 				var animate = function () {
 					renderer.render( scene, camera );
 
-					var targetPosition = 0;
+					var targetPosition = 1;
 					var originalPositionX = -80;
 					var originalPositionZ = -100;
 
@@ -441,6 +455,8 @@
 						if (stage.position.x <= targetPosition) {
 							stage.position.x += 0.09;
 							stage.position.z += 0.09;
+							// stageLight.target.position.x = stage.position.x;
+							// stageLight.target.position.z = stage.position.z;
 							if (stage.position.x <= -59) {
 								controls.update(); 
 							}
