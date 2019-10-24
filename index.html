@@ -84,6 +84,7 @@
 			import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 			import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 			import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
+			import { FBXLoader } from '/node_modules/three/examples/jsm/loaders/FBXLoader.js';
 
 			var changeButtonText = function () {
 				var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
@@ -133,6 +134,20 @@
 				camera.add( listener );
 	
 				var scene = new THREE.Scene();
+
+				var loader = new FBXLoader();
+				loader.load( 'models/kanye.fbx', function ( object ) {
+						mixer = new THREE.AnimationMixer( object );
+						var action = mixer.clipAction( object.animations[ 0 ] );
+						action.play();
+						object.traverse( function ( child ) {
+							if ( child.isMesh ) {
+								child.castShadow = true;
+								child.receiveShadow = true;
+							}
+						} );
+						scene.add( object );
+				} );
 	
 				// STAGE // 
 				var geometry = new THREE.BoxGeometry( 60, 6, 90 );
