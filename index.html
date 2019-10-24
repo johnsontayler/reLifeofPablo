@@ -418,18 +418,21 @@
 				{
 					if(e.keyCode == 37) { // left arrow
 						stage.position.x -= 1;
+						stageLight.target.position.x = stage.position.x;
 					}
 				});
 				var stageForward = document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 38) { // up arrow
 						stage.position.z += 1;
+						stageLight.target.position.z = stage.position.z;
 					}
 				});
 				var stageBack = document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 40) { // down arrow
 						stage.position.z -= 1;
+						stageLight.target.position.z = stage.position.z;
 					}
 				});
 				// CONTROLS // 
