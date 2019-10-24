@@ -79,6 +79,7 @@
 				<a class="dropdown-item" id="about" href="#">About</a>
 			</div>
 		</div>
+		<!-- About_Overlay_Window -->
 		<script type="module">
 			import * as THREE from '/node_modules/three/build/three.module.js';
 			import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
@@ -108,6 +109,19 @@
 			startButton.addEventListener( 'click', function () {
 				var overlay = document.getElementById( 'overlay' );
 				overlay.remove();
+
+				var aboutLink = document.getElementById('about');
+				aboutLink.addEventListener( 'click', function() {
+					var firstBodyDiv = document.querySelector('#overlay');
+					var aboutOverlay = `		
+					<div id="overlayAbout">
+						<div id="aboutInfo">
+							<i class="fas fa-times" id="exitOverlayAbout"></i>
+							<p>This is all about reLifeofPablo -- the greated Kanye fan web app ever.</p>
+						</div>
+					</div>`;
+					firstBodyDiv.insertAdjacentHTML( 'afterend', aboutOverlay );
+				});
 
 				var array30 = new Array(30);
 
