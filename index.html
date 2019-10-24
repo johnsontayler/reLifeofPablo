@@ -293,13 +293,13 @@
 				yeezyLight.penumbra = 0.05;
 				yeezyLight.decay = 1;
 				yeezyLight.distance = 200;
-				yeezyLight.position.set( 0, 90, -5 );
+				yeezyLight.position.set( 0, 90, -35 );
 
 				stage.add( stageLight, yeezyLight );
 
-				//var spotLightHelper = new THREE.SpotLightHelper( stageLight );
+				var spotLightHelper = new THREE.SpotLightHelper( stageLight );
 				//var spotLightHelper2 = new THREE.SpotLightHelper( yeezyLight );
-				//stage.add( spotLightHelper, spotLightHelper2 );
+				stage.add( spotLightHelper);
 				// LIGHTING // 
 
 				// MUSIC // 
