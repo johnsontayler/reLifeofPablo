@@ -5,6 +5,14 @@
 		<meta name="description" content="An interactive web app to relive The Life of Pablo, Kanye West's greatest concert experience.">
 		<meta name="keywords" content="Kanye West, Kanye, Yeezy, TLOP, The Life of Pablo, Three JS, Best Concert, Best Album, JavaScript">
 		<meta name="author" content="Tayler Evan Johnson">
+		<!-- Facebook Open Graph data -->
+		<meta property="og:title" content="reLifeofPablo: interactive web app" />
+		<meta property="og:type" content='web application' />
+		<meta property="og:url" content='http://reLifeofPablo.com'/>
+		<meta property="og:image" content='' />
+		<meta property="og:description" content="An interactive web app to relive The Life of Pablo, Kanye West's greatest concert experience." />
+		<meta property="og:site_name" content='reLifeofPablo' />
+		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		<style>
@@ -61,11 +69,12 @@
 				<a class="dropdown-item" id="setlistMenu31" href="#">Ultralight Beam</a>
 			</div>
 		</div>
-		<script src="js/three.js"></script>
-		<script src="js/GLTFLoader.js"></script>
-		<script src="js/OrbitControls.js"></script>
-		<script src="js/SkeletonUtils.js"></script>
-		<script>
+		<script type="module">
+			import * as THREE from 'js/three.module.js';
+			import { OrbitControls } from 'js/OrbitControls.js';
+			import { GLTFLoader } from 'js/GLTFLoader.js';
+			import { SkeletonUtils } from 'js/SkeletonUtils.js';
+
 			var changeButtonText = function () {
 				var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
 
@@ -82,6 +91,7 @@
 							}
 				}, 1000);
 			};
+			changeButtonText();
 
 			var startButton = document.getElementById( 'startButton' );
 			startButton.addEventListener( 'click', function () {
@@ -136,10 +146,10 @@
 				// STAGE //
 
 				// YEEZY FANS // 
-				var audience1 = createAudienceGroup( ( 0, -20, 0 ) );
-				//var audience2 = createAudienceGroup( ( 0, -10, 0 ) )
-				console.log( audience1 );
-				scene.add( audience1 );
+				// var audience1 = createAudienceGroup( ( 0, -20, 0 ) );
+				// //var audience2 = createAudienceGroup( ( 0, -10, 0 ) )
+				// console.log( audience1 );
+				// scene.add( audience1 );
 				// YEEZY FANS // 
 				
 				// GENERAL ADMISSION FLOOR // 
@@ -347,7 +357,8 @@
 						var u = UNITS[ i ];
 						var model = getModelByName( u.modelName );
 						if ( model ) {
-							var clonedScene = SkeletonUtils.clone( model.scene );
+							var skeletonUtils = new SkeletonUtils();
+							var clonedScene = skeletonUtils.clone( model.scene );
 							if ( clonedScene ) {
 								// Different models can have different configurations of armatures and meshes. Therefore,
 								// We can't set position, scale or rotation to individual mesh objects. Instead we set
@@ -393,9 +404,6 @@
 					} );
 				}
 			});
-			
-
-			changeButtonText();
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
