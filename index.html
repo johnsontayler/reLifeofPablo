@@ -70,10 +70,10 @@
 			</div>
 		</div>
 		<script type="module">
-			import * as THREE from 'three';
-			import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-			import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-			import { SkeletonUtils } from 'three/examples/jsm/utils/SkeletonUtils.js';
+			import * as THREE from '/node_modules/three/build/three.module.js';
+			import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
+			import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
+			import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
 
 			var changeButtonText = function () {
 				var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
@@ -115,8 +115,6 @@
 
 				var numLoadedModels = 0;
 				loadModels();
-				animate();
-				changeAudioLoader();
 
 				var context = new AudioContext();
 
@@ -193,7 +191,7 @@
 				var sound = new THREE.PositionalAudio( listener );
 				let yzy = 0;
 				var changeAudioLoader = function () {
-					pabloSong = 
+					var pabloSong = 
 					[
 					'audio/0 Father Stretch.ogg',
 					'audio/1 Pt. 2.ogg',
@@ -257,7 +255,7 @@
 				document.body.appendChild( renderer.domElement );
 
 				// CONTROLS // 
-				var controls = new THREE.OrbitControls( camera, renderer.domElement );
+				var controls = new OrbitControls( camera, renderer.domElement );
 				controls.maxPolarAngle = Math.PI/2; 
 				controls.autoRotate = true; 
 				controls.keys = {
@@ -357,8 +355,8 @@
 						var u = UNITS[ i ];
 						var model = getModelByName( u.modelName );
 						if ( model ) {
-							var skeletonUtils = new SkeletonUtils();
-							var clonedScene = skeletonUtils.clone( model.scene );
+							// var skeletonUtils = new SkeletonUtils();
+							var clonedScene = SkeletonUtils.clone( model.scene );
 							if ( clonedScene ) {
 								// Different models can have different configurations of armatures and meshes. Therefore,
 								// We can't set position, scale or rotation to individual mesh objects. Instead we set
@@ -394,7 +392,7 @@
 				 * param onLoaded {function} A callback function that will be called when the model is loaded
 				 */
 				function loadGltfModel( model, onLoaded ) {
-					var loader = new THREE.GLTFLoader();
+					var loader = new GLTFLoader();
 					var modelName = "models/" + model.name + ".gltf";
 					loader.load( modelName, function ( gltf ) {
 						var scene = gltf.scene;
@@ -403,6 +401,9 @@
 						onLoaded();
 					} );
 				}
+
+				animate();
+				changeAudioLoader();
 			});
 		</script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
