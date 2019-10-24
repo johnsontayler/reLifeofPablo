@@ -279,40 +279,17 @@
 				var directionalLight = new THREE.DirectionalLight( 0x655e66 );
 				scene.add( directionalLight );
 
-				// var stageLight = new THREE.SpotLight( 0xf98125, 2 );
-				// stageLight.angle = 0.2;
-				// stageLight.penumbra = 0.2;
-				// stageLight.decay = 1;
-				// stageLight.distance = 200;
-				// stageLight.position.set( 0, 15, 30 );
-				// stageLight.target.position.set(stage.position.x, 1.8, stage.position.y );
-
 				var stageLight = new THREE.SpotLight( 0xf98125, 2 );
 				stageLight.position.set( 0, 150, 0 );
 				stageLight.angle = 0.47;
 				stageLight.penumbra = 0.6;
-				// stageLight.angle = 0.2;
-				// stageLight.penumbra = 0.2;
-				// stageLight.decay = 1;
-				// stageLight.distance = 200;
-				// stageLight.position.set( 0, 15, 15 );
-				stageLight.target.position.set(stage.position.x, -150, stage.position.y );
 
-				// var yeezyLight = new THREE.SpotLight( 0xf98125, 2 );
-				// yeezyLight.castShadow = true;
-				// yeezyLight.angle = 0.4;
-				// yeezyLight.penumbra = 0.05;
-				// yeezyLight.decay = 1;
-				// yeezyLight.distance = 200;
-				// yeezyLight.position.set( 0, 90, -35 );
+				stageLight.target.position.set(stage.position.x, -150, stage.position.y );
 
 				scene.add( stageLight );
 				scene.add( stageLight.target );
-				// stage.add( stageLight, yeezyLight );
-
-				//var spotLightHelper = new THREE.SpotLightHelper( stageLight );
+;
 				var spotLightHelper1 = new THREE.SpotLightHelper( stageLight );
-				//var spotLightHelper2 = new THREE.SpotLightHelper( yeezyLight );
 				scene.add( spotLightHelper1 );
 				// LIGHTING // 
 
