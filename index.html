@@ -280,26 +280,17 @@
 				scene.add( directionalLight );
 
 				var stageLight = new THREE.SpotLight( 0xf98125, 2 );
-				stageLight.castShadow = false;
-				stageLight.angle = 0.8;
-				stageLight.penumbra = 0.1;
-				stageLight.decay = 1;
-				stageLight.distance = 200;
-				stageLight.position.set( 0, 25, 5 );
+				stageLight.position.set( 0, 150, 0 );
+				stageLight.angle = 0.47;
+				stageLight.penumbra = 0.6;
 
-				var yeezyLight = new THREE.SpotLight( 0xf98125, 2 );
-				yeezyLight.castShadow = true;
-				yeezyLight.angle = 0.4;
-				yeezyLight.penumbra = 0.05;
-				yeezyLight.decay = 1;
-				yeezyLight.distance = 200;
-				yeezyLight.position.set( 0, 90, -5 );
+				stageLight.target.position.set(stage.position.x, -150, stage.position.y );
 
-				stage.add( stageLight, yeezyLight );
+				scene.add( stageLight );
+				scene.add( stageLight.target );
 
-				//var spotLightHelper = new THREE.SpotLightHelper( stageLight );
-				//var spotLightHelper2 = new THREE.SpotLightHelper( yeezyLight );
-				//stage.add( spotLightHelper, spotLightHelper2 );
+				// var spotLightHelper1 = new THREE.SpotLightHelper( stageLight );
+				// scene.add( spotLightHelper1 );
 				// LIGHTING // 
 
 				// MUSIC // 
@@ -397,24 +388,28 @@
 				{
 					if(e.keyCode == 39) { // right arrow
 						stage.position.x += 1;
+						stageLight.target.position.x = stage.position.x;
 					}
 				});
 				var stageLeft = document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 37) { // left arrow
 						stage.position.x -= 1;
+						stageLight.target.position.x = stage.position.x;
 					}
 				});
 				var stageForward = document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 38) { // up arrow
 						stage.position.z += 1;
+						stageLight.target.position.z = stage.position.z;
 					}
 				});
 				var stageBack = document.addEventListener( 'keydown', function (e)
 				{
 					if(e.keyCode == 40) { // down arrow
 						stage.position.z -= 1;
+						stageLight.target.position.z = stage.position.z;
 					}
 				});
 				// CONTROLS // 
@@ -433,7 +428,7 @@
 				var animate = function () {
 					renderer.render( scene, camera );
 
-					var targetPosition = 0;
+					var targetPosition = 1;
 					var originalPositionX = -80;
 					var originalPositionZ = -100;
 
@@ -441,6 +436,8 @@
 						if (stage.position.x <= targetPosition) {
 							stage.position.x += 0.09;
 							stage.position.z += 0.09;
+							stageLight.target.position.x = stage.position.x;
+							stageLight.target.position.z = stage.position.z;
 							if (stage.position.x <= -59) {
 								controls.update(); 
 							}
