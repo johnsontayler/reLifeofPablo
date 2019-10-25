@@ -91,7 +91,7 @@
 					object.castShadow = true;
 					object.receiveShadow = true;
 					object.scale.set( 0.08, 0.08, 0.08 )
-					object.position.y = 3.5;
+					object.position.y = 3.3;
 					stage.add( object );
 			} );
 
@@ -200,14 +200,21 @@
 				audioLoader.load( pabloSong[yzy], function( buffer ) {
 					console.log(pabloSong[yzy]);
 					sound.setBuffer( buffer );
-					sound.setLoop(true);
+					sound.setLoop(false);
 					sound.setRefDistance(140);
-					// sound.setVolume(10);
-					if (sound.isPlaying) {
-						sound.play()
-					}
+					sound.play();
 				});
 			};
+
+			if (sound) {
+				sound.onEnded = function() {
+					console.log('sound ended');
+					this.isPlaying = false; 
+					yzy += 1;
+					changeAudioLoader();
+				};
+			};
+
 			scene.add( sound );
 
 			// Menu Song Selection // 
@@ -310,7 +317,7 @@
 						}
 					}
 				}
-				
+
 				requestAnimationFrame( animate );
 			};
 			// ANIMATION //
@@ -470,14 +477,12 @@
 				} );
 			}
 
-			changeAudioLoader();
-
 			var startButton = document.getElementById( 'startButton' );
 			startButton.addEventListener( 'click', function () {
 				var overlay = document.getElementById( 'overlay' );
 				overlay.remove()
 				animate();
-				sound.play();
+				changeAudioLoader();
 			});
 		</script>
 	</head>
@@ -486,7 +491,7 @@
 			<div id="info">
 				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x" target="_blank" rel="noopener">Kanye West</a><br/>
 				navigate with arrows or mouse | change songs with spacebar<br/>
-				🎧 sound on | 🚨 not mobile compatible 🚨
+				🎧 sound on | 🚨mobile not compatible 🚨
 			</div>
 			<div id=pabloTitle>
 				<button id="startButton">Click to Resurrect</button>
