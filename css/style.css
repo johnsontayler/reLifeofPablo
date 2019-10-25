@@ -53,18 +53,14 @@
   align-items: center;
 }
 
-a {
+#info a {
   color: white;
   text-decoration: none;
 }
 
-a:hover {
+#info > a:hover {
   color: white;
   text-decoration: line-through;
-}
-
-a:active, a:focus {
-  text-decoration: none!important;;
 }
 
 #overlayAbout {
@@ -85,25 +81,18 @@ a:active, a:focus {
 }
 
 #aboutInfo {
-  position: absolute;
+  /* position: absolute;
   z-index: 2;
-  width: 100%;
+  width: 100%; */
   padding: 10px;
   font-family: Helvetica;
   font-size: 16px;
   line-height: 24px;
   color: white;
-  align-items: center;
-}
-
-#aboutInfo > p {
-  position: absolute;
-  z-index: 2;
 }
 
 #exitOverlayAbout {
-  position: absolute;
-  z-index: 2;
+  position: fixed;
   top: 2rem;
   right: 2rem;
   font-size: 1.5rem;
@@ -121,4 +110,5 @@ a:active, a:focus {
 
 .dropdown-item {
   color: white;
+  text-decoration: none!important;
 }
