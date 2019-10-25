@@ -22,20 +22,19 @@
 #overlay > div > button {
   width: 200px;
   height: 32px;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: white;
-  background-color: black;
-  border: none;
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  color: black;
+  background-color: transparent;
+  border: 2px solid black;
+  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
   transition: all 0.3s ease 0s;
-  cursor: pointer;
-  outline: none;
+  /* cursor: pointer;
+  outline: none; */
 }
 
 #overlay > div > button:hover {
   background-color: black;
-  box-shadow: 0px 2px 15px black;
+  /* box-shadow: 0px 2px 15px black; */
   color: #fff;
   /* transform: translateY(-1px); */
 }
@@ -65,7 +64,7 @@
 
 #overlayAbout {
   position: absolute;
-  z-index: 1;
+  z-index: -1;
   top: 0;
   left: 0;
   width: 100%;
