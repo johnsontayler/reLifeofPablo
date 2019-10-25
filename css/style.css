@@ -20,20 +20,23 @@
 }
 
 #overlay > div > button {
-  height: 32px;
   width: 200px;
-  background: transparent;
-  color: black;
-  outline: 2px solid black;
-  border: 0px;
-  cursor: pointer;
+  height: 32px;
   font-weight: bold;
+  color: black;
+  background-color: transparent;
+  border: 2px solid black;
+  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease 0s;
+  /* cursor: pointer;
+  outline: none; */
 }
 
 #overlay > div > button:hover {
-  color: white;
-  background: black;
-  outline: 1px solid black;
+  background-color: black;
+  /* box-shadow: 0px 2px 15px black; */
+  color: #fff;
+  /* transform: translateY(-1px); */
 }
 
 #info {
@@ -49,18 +52,49 @@
   align-items: center;
 }
 
-a {
+#info a {
   color: white;
   text-decoration: none;
 }
 
-a:hover {
+#info > a:hover {
   color: white;
   text-decoration: line-through;
 }
 
-a:active, a:focus {
-  text-decoration: none!important;;
+#overlayAbout {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  background-color: black;
+  opacity: 0.8;
+  text-align: center;
+  font-weight: bold;
+}
+
+#aboutInfo {
+  /* position: absolute;
+  z-index: 2;
+  width: 100%; */
+  padding: 10px;
+  font-family: Helvetica;
+  font-size: 16px;
+  line-height: 24px;
+  color: white;
+}
+
+#exitOverlayAbout {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  font-size: 1.5rem;
 }
 
 .dropdown-menu {
@@ -75,4 +109,5 @@ a:active, a:focus {
 
 .dropdown-item {
   color: white;
+  text-decoration: none!important;
 }
