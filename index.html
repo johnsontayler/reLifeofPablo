@@ -203,7 +203,9 @@
 					sound.setLoop(true);
 					sound.setRefDistance(140);
 					// sound.setVolume(10);
-					// sound.play()
+					if (sound.isPlaying) {
+						sound.play()
+					}
 				});
 			};
 			scene.add( sound );
@@ -484,13 +486,14 @@
 			<div id="info">
 				Created by <a href="http://taylerjohnson.com" target="_blank" rel="noopener">Tayler Evan Johnson</a> | music by <a href="https://open.spotify.com/artist/5K4W6rqBFWDnAN6FQUkS6x" target="_blank" rel="noopener">Kanye West</a><br/>
 				navigate with arrows or mouse | change songs with spacebar
+				<img src="img/audio_wave.gif" alt="audio waves gif" class="waves-icon">
 			</div>
 			<div id=pabloTitle>
 				<button id="startButton">Click to Resurrect</button>
 				<p>THE LIFE OF PABLO</p>
 			</div>
 		</div>
-		<div id="dropdown" style="position: absolute; top: 0; left: 0; color: white;">
+		<div id="dropdown" style="position: absolute; top: 0; left: 0.7rem; color: white;">
 			<div class="dropdown-toggle" type="" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				WHICH / ONE
 			</div>
