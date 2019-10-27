@@ -4,6 +4,17 @@ import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.
 import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
 import { FBXLoader } from '/node_modules/three/examples/jsm/loaders/FBXLoader.js';
 
+var loadingPage = function () {
+  var loading = document.getElementById( 'loading' );
+
+  setInterval(function() {
+        if (loading) {
+          loading.remove()
+        }
+  }, 5000);
+};
+loadingPage();
+
 var changeButtonText = function () {
   var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
 
