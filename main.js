@@ -22,6 +22,18 @@ var changeButtonText = function () {
 };
 changeButtonText();
 
+var kanyeLoader = new FBXLoader();
+kanyeLoader.load( 'models/liam.fbx', function ( object ) {
+    // mixer = new THREE.AnimationMixer( object );
+    // var action = mixer.clipAction( object.animations[ 0 ] );
+    // action.play();
+    object.castShadow = true;
+    object.receiveShadow = true;
+    object.scale.set( 0.08, 0.08, 0.08 )
+    object.position.y = 3.3;
+    stage.add( object );
+} );
+
 var array30 = new Array(30);
 
 var MODELS = [ { name: "audience" } ];
@@ -38,8 +50,6 @@ var numLoadedModels = 0;
 createUnits();
 loadModels();
 
-var context = new AudioContext();
-
 var camera = new THREE.PerspectiveCamera( 50, window.innerWidth/window.innerHeight, 0.1, 1000 );
 camera.position.set( 120, 80, 15 );
 
@@ -48,17 +58,6 @@ camera.add( listener );
 
 var scene = new THREE.Scene();
 
-var kanyeLoader = new FBXLoader();
-kanyeLoader.load( 'models/liam.fbx', function ( object ) {
-    // mixer = new THREE.AnimationMixer( object );
-    // var action = mixer.clipAction( object.animations[ 0 ] );
-    // action.play();
-    object.castShadow = true;
-    object.receiveShadow = true;
-    object.scale.set( 0.08, 0.08, 0.08 )
-    object.position.y = 3.3;
-    stage.add( object );
-} );
 
 // STAGE // 
 var geometry = new THREE.BoxGeometry( 60, 6, 90 );
@@ -123,7 +122,6 @@ scene.add( stageLight.target );
 
 // MUSIC // 
 var sound = new THREE.PositionalAudio( listener );
-var sound0 = new THREE.PositionalAudio( listener );
 let yzy = 0;
 var pabloSong = []
 var changeAudioLoader = function () {
