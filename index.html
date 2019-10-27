@@ -263,14 +263,14 @@
 			});
 			var stageForward = document.addEventListener( 'keydown', function (e)
 			{
-				if(e.keyCode == 38) { // up arrow
+				if(e.keyCode == 40) { // up arrow
 					stage.position.z += 1;
 					stageLight.target.position.z = stage.position.z;
 				}
 			});
 			var stageBack = document.addEventListener( 'keydown', function (e)
 			{
-				if(e.keyCode == 40) { // down arrow
+				if(e.keyCode == 38) { // down arrow
 					stage.position.z -= 1;
 					stageLight.target.position.z = stage.position.z;
 				}
