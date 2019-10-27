@@ -11,7 +11,7 @@ var loadingPage = function () {
         if (loading) {
           loading.remove()
         }
-  }, 5000);
+  }, 10000);
 };
 loadingPage();
 
