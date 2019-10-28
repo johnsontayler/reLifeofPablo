@@ -281,10 +281,10 @@ function animate() {
 /// Remove Landing Page + Start Animation & Concert  ///
 var startButton = document.getElementById( 'startButton' );
 startButton.addEventListener( 'click', function () {
+  initConcert(); 
+  animate();
   var overlay = document.getElementById( 'overlay' );
   overlay.remove()
-  animate();
-  initConcert(); 
 });
 /////////////////////////////////////////////////////////
 
