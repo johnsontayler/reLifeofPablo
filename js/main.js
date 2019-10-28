@@ -33,13 +33,8 @@ changeButtonText();
 /////////////////////////////////////
 
 ////////// Global Variables ////////
-var worldScene = null;
-var renderer = null;
-var camera = null;
-var listener = null;
-var stage = null;
-var stageLight = null;
-var controls = null;
+var worldScene, renderer, camera, listener
+var stage, stageLight, controls
 ////////////////////////////////////
 
 /////////// Build World ////////////
