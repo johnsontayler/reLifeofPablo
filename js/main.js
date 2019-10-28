@@ -1,6 +1,6 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { loadAudienceKanye } from 'js/load_audience_kanye.js';
+import { loadAudienceKanye } from '/js/load_audience_kanye.js';
 
 ///////////// Loading Page  /////////
 var loadingPage = document.getElementById( 'loading' );
