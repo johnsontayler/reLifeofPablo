@@ -9,7 +9,7 @@ function loadAudienceKanye( worldScene, stage ) {
 
   var array30 = new Array(30);
 
-  var MODELS = [ { name: "audience", name: "kanye" } ];
+  var MODELS = [ { name: "audience" } ];
 
   var UNITS = [
     {
@@ -171,13 +171,18 @@ function loadAudienceKanye( worldScene, stage ) {
     } );
 
     var kanyeLoader = new GLTFLoader();
-    loader.load( 'js/models/kanye.glb', function ( gltf ) {
-      gltf.castShadow = true;
-      gltf.receiveShadow = true;
-      gltf.scale.set( 0.08, 0.08, 0.08 )
-      gltf.position.y = 3.3;
-      stage.add( gltf );
+    kanyeLoader.load( 'js/models/kanye.glb', function ( gltf ) {
+      gltf.scene.traverse( function( object ) {
+        if ( object.isMesh ) { 
+          object.castShadow = true;
+          object.receiveShadow = true;
+        };
+      });
+      gltf.scene.scale.set( 7, 7, 7 )
+      gltf.scene.position.y = 3.3;
+      stage.add( gltf.scene );
       console.log( "Done loading model kanye" );
+      console.log(worldScene);
       onLoaded();
     } );
 
