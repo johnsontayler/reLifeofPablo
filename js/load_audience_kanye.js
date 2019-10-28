@@ -1,11 +1,24 @@
 import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
-import { FBXLoader } from '/node_modules/three/examples/jsm/loaders/FBXLoader.js';
 
 function loadAudienceKanye( worldScene, stage ) {
 
   var worldScene = worldScene;
   var stage = stage;
+
+  var kanyeLoader = new GLTFLoader();
+  kanyeLoader.load( 'js/models/kanye.glb', function ( gltf ) {
+    gltf.scene.traverse( function( object ) {
+      if ( object.isMesh ) { 
+        object.castShadow = true;
+        object.receiveShadow = true;
+      };
+    });
+    gltf.scene.scale.set( 7, 7, 7 )
+    gltf.scene.position.y = 3.3;
+    stage.add( gltf.scene );
+    console.log( "Done loading model kanye" );
+  } );
 
   var array30 = new Array(30);
 
@@ -161,27 +174,13 @@ function loadAudienceKanye( worldScene, stage ) {
   //// Load a 3D model from a GLTF file using GLTFLoader //// 
   ///////////////+++ Kanye FBXLoader! //////////////////////
   function loadGltfModel( model, onLoaded ) {
+
     var loader = new GLTFLoader();
     var modelName = "js/models/" + model.name + ".gltf";
     loader.load( modelName, function ( gltf ) {
       var scene = gltf.scene;
       model.scene = scene;
       console.log( "Done loading model", model.name );
-      onLoaded();
-    } );
-
-    var kanyeLoader = new GLTFLoader();
-    kanyeLoader.load( 'js/models/kanye.glb', function ( gltf ) {
-      gltf.scene.traverse( function( object ) {
-        if ( object.isMesh ) { 
-          object.castShadow = true;
-          object.receiveShadow = true;
-        };
-      });
-      gltf.scene.scale.set( 7, 7, 7 )
-      gltf.scene.position.y = 3.3;
-      stage.add( gltf.scene );
-      console.log( "Done loading model kanye" );
       onLoaded();
     } );
 
