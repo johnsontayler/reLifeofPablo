@@ -9,7 +9,7 @@ function loadAudienceKanye( worldScene, stage ) {
 
   var array30 = new Array(30);
 
-  var MODELS = [ { name: "audience" } ];
+  var MODELS = [ { name: "audience", name: "kanye" } ];
 
   var UNITS = [
     {
@@ -170,14 +170,17 @@ function loadAudienceKanye( worldScene, stage ) {
       onLoaded();
     } );
 
-    var kanyeLoader = new FBXLoader();
-    kanyeLoader.load( 'js/models/liam.fbx', function ( object ) {
-        object.castShadow = true;
-        object.receiveShadow = true;
-        object.scale.set( 0.08, 0.08, 0.08 )
-        object.position.y = 3.3;
-        stage.add( object );
+    var kanyeLoader = new GLTFLoader();
+    loader.load( 'js/models/kanye.glb', function ( gltf ) {
+      gltf.castShadow = true;
+      gltf.receiveShadow = true;
+      gltf.scale.set( 0.08, 0.08, 0.08 )
+      gltf.position.y = 3.3;
+      stage.add( gltf );
+      console.log( "Done loading model kanye" );
+      onLoaded();
     } );
+
   }
   
 }
