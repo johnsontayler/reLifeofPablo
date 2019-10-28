@@ -78,12 +78,21 @@ function initScene() {
   worldScene.add(gaFloor);
 
   var directionalLight = new THREE.DirectionalLight( 0x655e66 );
+  directionalLight.castShadow = true;
+  directionalLight.shadow.camera.top = 40;
+  // directionalLight.shadow.camera.bottom = - 10;
+  // directionalLight.shadow.camera.left = - 10;
+  // directionalLight.shadow.camera.right = 10;
+  // directionalLight.shadow.camera.near = 0.1;
+  // directionalLight.shadow.camera.far = 40;
   worldScene.add( directionalLight );
   
   stageLight = new THREE.SpotLight( 0xf98125, 2 );
   stageLight.position.set( 0, 150, 0 );
   stageLight.angle = 0.47;
   stageLight.penumbra = 0.6;
+  stageLight.castShadow = true;
+  // stageLight.shadow.camera.top = 40;
   stageLight.target.position.set(stage.position.x, -150, stage.position.y );
   worldScene.add( stageLight );
   worldScene.add( stageLight.target );
