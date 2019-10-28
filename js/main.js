@@ -77,7 +77,7 @@ function initScene() {
   gaFloor.rotation.x = Math.PI / 2;
   worldScene.add(gaFloor);
 
-  var directionalLight = new THREE.DirectionalLight( 0x655e66 );
+  var directionalLight = new THREE.DirectionalLight( 0x464347 );
   directionalLight.castShadow = true;
   directionalLight.shadow.camera.top = 40;
   // directionalLight.shadow.camera.bottom = - 10;
