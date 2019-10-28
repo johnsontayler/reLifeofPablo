@@ -167,7 +167,6 @@ function initConcert() {
       console.log(pabloSong[yzy]);
       sound.setBuffer( buffer );
       sound.setLoop(false);
-      sound.setRefDistance(140);
       sound.play(); 
     });
   };
