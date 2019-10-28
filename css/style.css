@@ -1,3 +1,17 @@
+body a {
+  color: white;
+  text-decoration: none;
+}
+
+#info a:hover {
+  color: white;
+  text-decoration: line-through;
+}
+
+a:active {
+  color: white;
+}
+
 #loading {
   position: absolute;
   z-index: 2;
@@ -72,21 +86,10 @@
   top: 0;
   width: 100%;
   padding: 10px;
-  font-family: Helvetica;
   font-size: 13px;
   line-height: 24px;
   color: black;
   align-items: center;
-}
-
-#info a {
-  color: white;
-  text-decoration: none;
-}
-
-#info > a:hover {
-  color: white;
-  text-decoration: line-through;
 }
 
 #overlayAbout {
@@ -98,23 +101,25 @@
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 1;
-  background-color: black;
+  background: black;
   opacity: 0.8;
   text-align: center;
   font-weight: bold;
 }
 
 #aboutInfo {
-  /* position: absolute;
-  z-index: 2;
-  width: 100%; */
-  padding: 10px;
-  font-family: Helvetica;
+  padding: 3rem;
   font-size: 16px;
   line-height: 24px;
   color: white;
+}
+
+#aboutInfo a {
+  color: orange;
+}
+
+#aboutInfo p a:hover {
+  text-decoration: line-through;
 }
 
 #exitOverlayAbout {
@@ -124,17 +129,27 @@
   font-size: 1.5rem;
 }
 
-.dropdown-menu {
-  background: transparent;
-}
-
 .scroll-menu {
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
 }
 
-.dropdown-item {
+.dropdown-item-x {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
   color: white;
-  text-decoration: none!important;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-item-x:hover {
+  color: black;
+  background-color: white;
+  text-decoration: none;
 }

@@ -182,7 +182,6 @@ function loadAudienceKanye( worldScene, stage ) {
       gltf.scene.position.y = 3.3;
       stage.add( gltf.scene );
       console.log( "Done loading model kanye" );
-      console.log(worldScene);
       onLoaded();
     } );
 
