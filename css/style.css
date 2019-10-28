@@ -1,3 +1,17 @@
+body a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: white;
+  text-decoration: line-through;
+}
+
+a:active {
+  color: white;
+}
+
 #loading {
   position: absolute;
   z-index: 2;
@@ -79,16 +93,6 @@
   align-items: center;
 }
 
-#info a {
-  color: white;
-  text-decoration: none;
-}
-
-#info > a:hover {
-  color: white;
-  text-decoration: line-through;
-}
-
 #overlayAbout {
   position: absolute;
   z-index: -1;
@@ -117,15 +121,19 @@
   color: white;
 }
 
+#aboutInfo a {
+  color: black;
+}
+
+/* #aboutInfo a:hover {
+  color: black;
+} */
+
 #exitOverlayAbout {
   position: fixed;
   top: 2rem;
   right: 2rem;
   font-size: 1.5rem;
-}
-
-.dropdown-menu {
-  background: transparent;
 }
 
 .scroll-menu {
@@ -134,7 +142,21 @@
   overflow-x: hidden;
 }
 
-.dropdown-item {
+.dropdown-item-x {
+  display: block;
+  width: 100%;
+  padding: .25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
   color: white;
-  text-decoration: none!important;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-item-x:hover {
+  color: black;
+  background-color: white;
+  text-decoration: none;
 }
