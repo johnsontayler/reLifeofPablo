@@ -1,35 +1,32 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { loadAudienceKanye } from '/js/load_audience_kanye.js';
+import { loadAudienceKanye } from 'js/load_audience_kanye.js';
 
 ///////////// Loading Page  /////////
-var loadingPage = function () {
-  var loading = document.getElementById( 'loading' );
+var loadingPage = document.getElementById( 'loading' );
 
-  setInterval(function() {
-        if (loading) {
-          loading.remove()
-        }
-  }, 10000);
-};
-loadingPage();
+setInterval(function() {
+  if (loadingPage) {
+    loadingPage.remove()
+  }
+}, 10000);
 /////////////////////////////////////
 
 /// Landing Page Button Animation ///
 var changeButtonText = function () {
   var text = ["Click to Relive", "Click to Rejoice", "Click to Reincarnate", "Click to Recreate", "Click to Resurrect"];
 
-  const startButtonText = document.getElementById("startButton");
+  var startButtonText = document.getElementById("startButton");
 
   let i = 0;
   setInterval(function() {
-        if (startButtonText) {
-          startButtonText.innerText = text[i];
-          i = i + 1;
-          if (i == text.length) {
-            i =  0;
-          }
-        }
+    if (startButtonText) {
+      startButtonText.innerText = text[i];
+      i = i + 1;
+      if (i == text.length) {
+        i =  0;
+      }
+    }
   }, 1000);
 };
 changeButtonText();
@@ -41,10 +38,11 @@ var renderer = null;
 var camera = null;
 var listener = null;
 var stage = null;
+var stageLight = null;
+var controls = null;
 ////////////////////////////////////
 
 /////////// Build World ////////////
-loadAudienceKanye();
 initScene();
 initRenderer();
 ///////////////////////////////////
@@ -58,19 +56,6 @@ function initScene() {
   
   worldScene = new THREE.Scene();
   
-  var directionalLight = new THREE.DirectionalLight( 0x655e66 );
-  worldScene.add( directionalLight );
-  
-  var stageLight = new THREE.SpotLight( 0xf98125, 2 );
-  stageLight.position.set( 0, 150, 0 );
-  stageLight.angle = 0.47;
-  stageLight.penumbra = 0.6;
-  stageLight.target.position.set(stage.position.x, -150, stage.position.y );
-  worldScene.add( stageLight );
-  worldScene.add( stageLight.target );
-  // var spotLightHelper1 = new THREE.SpotLightHelper( stageLight );
-  // worldScene.add( spotLightHelper1 );
-
   var stageGeometry = new THREE.BoxGeometry( 60, 6, 90 );
   var stageMaterials = 
   [
@@ -86,6 +71,8 @@ function initScene() {
   stage.position.set( -80, 15, -100 );
   stage.receiveShadow = true;
   worldScene.add( stage );
+
+  loadAudienceKanye( worldScene, stage );
   
   var gaFloor = new THREE.Mesh(
     new THREE.PlaneGeometry( 720, 720, 30, 24 ),
@@ -94,9 +81,22 @@ function initScene() {
   gaFloor.position.set( 0, -20, 0 );
   gaFloor.rotation.x = Math.PI / 2;
   worldScene.add(gaFloor);
+
+  var directionalLight = new THREE.DirectionalLight( 0x655e66 );
+  worldScene.add( directionalLight );
+  
+  stageLight = new THREE.SpotLight( 0xf98125, 2 );
+  stageLight.position.set( 0, 150, 0 );
+  stageLight.angle = 0.47;
+  stageLight.penumbra = 0.6;
+  stageLight.target.position.set(stage.position.x, -150, stage.position.y );
+  worldScene.add( stageLight );
+  worldScene.add( stageLight.target );
+  // var spotLightHelper1 = new THREE.SpotLightHelper( stageLight );
+  // worldScene.add( spotLightHelper1 );
     
   window.addEventListener( 'resize', onWindowResize );
-  
+
 }
   
 function initRenderer() {
@@ -105,7 +105,7 @@ function initRenderer() {
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
   
-  var controls = new OrbitControls( camera, renderer.domElement );
+  controls = new OrbitControls( camera, renderer.domElement );
   controls.maxPolarAngle = Math.PI/2; 
   controls.autoRotate = true; 
   controls.maxDistance = 300;
@@ -122,7 +122,7 @@ function initConcert() {
   var sound = new THREE.PositionalAudio( listener );
   let yzy = 0;
   var pabloSong = []
-  var changeAudioLoader = function() {
+  function changeAudioLoader() {
     pabloSong = 
     [
     'audio/0 Father Stretch.ogg',
@@ -167,6 +167,7 @@ function initConcert() {
       sound.play(); 
     });
   };
+  changeAudioLoader();
   worldScene.add( sound );
   
   ///////////////////////////////////

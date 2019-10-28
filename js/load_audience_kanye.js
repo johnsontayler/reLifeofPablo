@@ -2,7 +2,10 @@ import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.
 import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
 import { FBXLoader } from '/node_modules/three/examples/jsm/loaders/FBXLoader.js';
 
-function loadAudienceKanye() {
+function loadAudienceKanye( worldScene, stage ) {
+
+  var worldScene = worldScene;
+  var stage = stage;
 
   var array30 = new Array(30);
 
