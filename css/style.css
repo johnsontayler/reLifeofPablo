@@ -3,7 +3,7 @@ body a {
   text-decoration: none;
 }
 
-a:hover {
+#info a:hover {
   color: white;
   text-decoration: line-through;
 }
@@ -86,7 +86,6 @@ a:active {
   top: 0;
   width: 100%;
   padding: 10px;
-  font-family: Helvetica;
   font-size: 13px;
   line-height: 24px;
   color: black;
@@ -102,9 +101,7 @@ a:active {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  opacity: 1;
-  background-color: black;
+  background: black;
   opacity: 0.8;
   text-align: center;
   font-weight: bold;
@@ -115,19 +112,18 @@ a:active {
   z-index: 2;
   width: 100%; */
   padding: 10px;
-  font-family: Helvetica;
   font-size: 16px;
   line-height: 24px;
   color: white;
 }
 
 #aboutInfo a {
-  color: black;
+  color: orange;
 }
 
-/* #aboutInfo a:hover {
-  color: black;
-} */
+#aboutInfo p a:hover {
+  text-decoration: line-through;
+}
 
 #exitOverlayAbout {
   position: fixed;
