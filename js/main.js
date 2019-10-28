@@ -168,6 +168,7 @@ function initConcert() {
       sound.setBuffer( buffer );
       sound.setLoop(false);
       sound.play(); 
+      sound.setRefDistance(140);
     });
   };
   changeAudioLoader();
