@@ -131,37 +131,12 @@ function initConcert() {
   function changeAudioLoader() {
     pabloSong = 
     [
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/0+Father+Stretch.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/media.io_1+Pt.+2.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/2+Famous.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/3+Pop.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/4+That+Part.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/5+Facts.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/6+Mercy.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/7+Dont+Like.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/8+All+Day.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/9+Black+Skinhead.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/10+Niggas.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/11+Cant+Tell.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/12+Power.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/13+Blood.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/14+Freestyle.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/15+Jesus+Walks.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/16+Flashing.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/17+Highlights.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/18+Feedback.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/19+Wolves.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/20+Heartless.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/21+Runaway.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/22+Only+One.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/23+I+Love.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/24+Waves.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/25+All+Lights.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/26+Good+Life.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/27+Stronger.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/28+Touch+Sky.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/29+Fade.ogg',
-    'https://relifeofpablo.s3-us-west-1.amazonaws.com/30+Ultralight.ogg',
+    'audio/0 Father Stretch.mp3',
+    'audio/1 Pt. 2.mp3',
+    'audio/3 Pop.mp3',
+    'audio/4 That Part.mp3',
+    'audio/5 Facts.mp3',
+    'audio/6 Mercy.mp3'
     ]
   
     var audioLoader = new THREE.AudioLoader();
