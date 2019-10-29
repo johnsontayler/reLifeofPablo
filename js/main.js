@@ -136,7 +136,12 @@ function initConcert() {
     'audio/3 Pop.mp3',
     'audio/4 That Part.mp3',
     'audio/5 Facts.mp3',
-    'audio/6 Mercy.mp3'
+    'audio/6 Mercy.mp3',
+    'audio/7 Dont Like.mp3',
+    'audio/8 All Day.mp3',
+    'audio/9 Black Skinhead.mp3',
+    'audio/10 Niggas.mp3',
+    'audio/11 Cant Tell.mp3'
     ]
   
     var audioLoader = new THREE.AudioLoader();
