@@ -176,6 +176,7 @@ function initConcert() {
   changeAudioLoader();
   worldScene.add( sound );
   
+  
   ///////////////////////////////////
   /// MUSIC & STAGE CONTROLS
   //////////////////////////////////
