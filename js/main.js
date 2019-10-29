@@ -9,7 +9,7 @@ setInterval(function() {
   if (loadingPage) {
     loadingPage.remove()
   }
-}, 10000);
+}, 15000);
 /////////////////////////////////////
 
 /// Landing Page Button Animation ///
