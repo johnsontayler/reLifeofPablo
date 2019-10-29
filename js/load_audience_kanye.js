@@ -1,5 +1,6 @@
 import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { SkeletonUtils } from '/node_modules/three/examples/jsm/utils/SkeletonUtils.js';
+import { DRACOLoader } from '/node_modules/three/examples/jsm/loaders/DRACOLoader.js';
 
 function loadAudienceKanye( worldScene, stage ) {
 
@@ -7,7 +8,12 @@ function loadAudienceKanye( worldScene, stage ) {
   var stage = stage;
 
   var kanyeLoader = new GLTFLoader();
-  kanyeLoader.load( 'js/models/kanye.glb', function ( gltf ) {
+  var dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
+  kanyeLoader.setDRACOLoader( dracoLoader );
+
+  kanyeLoader.load( 'js/models/kanyeDraco.gltf', function ( gltf ) {
+    gltf.scene.castShadow = true;
     gltf.scene.traverse( function( object ) {
       if ( object.isMesh ) { 
         object.castShadow = true;
@@ -18,7 +24,8 @@ function loadAudienceKanye( worldScene, stage ) {
     gltf.scene.position.y = 3.3;
     stage.add( gltf.scene );
     console.log( "Done loading model kanye" );
-  } );
+
+  });
 
   var array30 = new Array(30);
 
