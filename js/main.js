@@ -77,7 +77,7 @@ function initScene() {
   gaFloor.rotation.x = Math.PI / 2;
   worldScene.add(gaFloor);
 
-  var directionalLight = new THREE.DirectionalLight( 0x464347 );
+  var directionalLight = new THREE.DirectionalLight( 0x343234 );
   directionalLight.castShadow = true;
   directionalLight.shadow.camera.top = 40;
   // directionalLight.shadow.camera.bottom = - 10;
@@ -107,6 +107,8 @@ function initRenderer() {
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.gammaOutput = true;
+  renderer.gammaFactor = 1.2;
   document.body.appendChild( renderer.domElement );
   
   controls = new OrbitControls( camera, renderer.domElement );
