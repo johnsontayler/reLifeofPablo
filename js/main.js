@@ -305,7 +305,7 @@ startButton.addEventListener( 'click', function () {
   var overlay = document.getElementById( 'overlay' );
   overlay.remove()
 });
-document.addEventListener('touchstart', initConcert);
+document.addEventListener('click', initConcert);
 /////////////////////////////////////////////////////////
 
 //// About Page  ////
