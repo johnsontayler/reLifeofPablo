@@ -305,7 +305,6 @@ startButton.addEventListener( 'click', function () {
   var overlay = document.getElementById( 'overlay' );
   overlay.remove()
 });
-document.addEventListener('click', initConcert);
 /////////////////////////////////////////////////////////
 
 //// About Page  ////
