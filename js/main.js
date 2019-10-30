@@ -50,6 +50,17 @@ function initScene() {
   camera.add( listener );
   
   worldScene = new THREE.Scene();
+  const loader = new THREE.CubeTextureLoader();
+  const texture = loader.load([
+    '/all-of-the-lights.jpeg',
+    '/all-of-the-lights.jpeg',
+    '/all-of-the-lights.jpeg',
+    '/all-of-the-lights.jpeg',
+    '/all-of-the-lights.jpeg',
+    '/all-of-the-lights.jpeg',
+  ]);
+  texture.minFilter = THREE.LinearFilter;
+  worldScene.background = texture;
   
   var stageGeometry = new THREE.BoxGeometry( 60, 6, 90 );
   var stageMaterials = 
