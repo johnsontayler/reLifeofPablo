@@ -81,21 +81,6 @@ function initScene() {
   stage.receiveShadow = true;
   worldScene.add( stage );
 
-  var video = document.getElementById( 'video' );
-  video.play();
-  var videoTexture = new THREE.VideoTexture( video );
-  videoTexture.minFilter = THREE.LinearFilter;
-  videoTexture.magFilter = THREE.LinearFilter;
-  videoTexture.format = THREE.RGBFormat;
-  var videoMaterial = new THREE.MeshBasicMaterial( { color: 0xee9205, map: videoTexture, side: THREE.DoubleSide } );
-  var videoBoxGeo = new THREE.PlaneGeometry( 30, 20, 32 );
-  // var videoBoxGeo = new THREE.BoxGeometry( 1, 1, 1 ); 
-  var videoBox = new THREE.Mesh( videoBoxGeo, videoMaterial );
-  videoBox.position.set( 0, 100, 0 );
-  videoBox.scale.set( 2, 2, 2 );
-  worldScene.add( videoBox );
-  console.log( "Done loading video" );
-
   loadAudienceKanye( worldScene, stage );
   
   var gaFloor = new THREE.Mesh(
@@ -153,6 +138,21 @@ function initRenderer() {
 }
 
 function initConcert() {
+
+  var video = document.getElementById( 'video' );
+  video.play();
+  var videoTexture = new THREE.VideoTexture( video );
+  videoTexture.minFilter = THREE.LinearFilter;
+  videoTexture.magFilter = THREE.LinearFilter;
+  videoTexture.format = THREE.RGBFormat;
+  var videoMaterial = new THREE.MeshBasicMaterial( { color: 0xee9205, map: videoTexture, side: THREE.DoubleSide } );
+  var videoBoxGeo = new THREE.PlaneGeometry( 30, 20, 32 );
+  // var videoBoxGeo = new THREE.BoxGeometry( 1, 1, 1 ); 
+  var videoBox = new THREE.Mesh( videoBoxGeo, videoMaterial );
+  videoBox.position.set( 0, 100, 0 );
+  videoBox.scale.set( 2, 2, 2 );
+  worldScene.add( videoBox );
+  console.log( "Done loading video" );
 
   var sound = new THREE.PositionalAudio( listener );
   let yzy = 0;
