@@ -5,11 +5,13 @@ import { loadAudienceKanye } from '/js/load_audience_kanye.js';
 ///////////// Loading Page  /////////
 var loadingPage = document.getElementById( 'loading' );
 
-setInterval(function() {
-  if (loadingPage) {
-    loadingPage.remove()
-  }
-}, 15000);
+if(loadingPage) {
+  setInterval(function() {
+    if (loadingPage) {
+      loadingPage.remove()
+    }
+  }, 15000);
+}
 /////////////////////////////////////
 
 /// Landing Page Button Animation ///
@@ -50,17 +52,18 @@ function initScene() {
   camera.add( listener );
   
   worldScene = new THREE.Scene();
-  const loader = new THREE.CubeTextureLoader();
-  const texture = loader.load([
-    '/all-of-the-lights.jpeg',
-    '/all-of-the-lights.jpeg',
-    '/all-of-the-lights.jpeg',
-    '/black.jpg',
-    '/all-of-the-lights.jpeg',
-    '/all-of-the-lights.jpeg',
-  ]);
-  texture.minFilter = THREE.LinearFilter;
-  worldScene.background = texture;
+
+  var auditoriumGeo = new THREE.BoxGeometry( 1, 1, 1 ); 
+  var loader  = new THREE.TextureLoader();
+  var texture = loader.load( "/all-of-the-lights.jpeg" );
+  var material = new THREE.MeshBasicMaterial( {map: texture} );
+  var auditorium = new THREE.Mesh(auditoriumGeo, material);
+  auditorium.position.set( 0, 15, 0 );
+  auditorium.scale.set( 800, 800, 800 );
+  auditorium.material.side = THREE.BackSide;
+  worldScene.add(auditorium);
+  // texture.minFilter = THREE.LinearFilter;
+  // worldScene.background = texture;
   
   var stageGeometry = new THREE.BoxGeometry( 60, 6, 90 );
   var stageMaterials = 
