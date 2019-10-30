@@ -48,8 +48,6 @@ function initScene() {
   
   camera = new THREE.PerspectiveCamera( 50, window.innerWidth/window.innerHeight, 0.1, 1000 );
   camera.position.set( 120, 80, 15 );
-  listener = new THREE.AudioListener();
-  camera.add( listener );
   
   worldScene = new THREE.Scene();
 
@@ -138,6 +136,9 @@ function initRenderer() {
 }
 
 function initConcert() {
+
+  listener = new THREE.AudioListener();
+  camera.add( listener );
 
   var video = document.getElementById( 'video' );
   video.play();
