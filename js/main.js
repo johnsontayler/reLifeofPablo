@@ -55,7 +55,7 @@ function initScene() {
     '/all-of-the-lights.jpeg',
     '/all-of-the-lights.jpeg',
     '/all-of-the-lights.jpeg',
-    '/all-of-the-lights.jpeg',
+    '/black.jpg',
     '/all-of-the-lights.jpeg',
     '/all-of-the-lights.jpeg',
   ]);
@@ -72,8 +72,8 @@ function initScene() {
     new THREE.MeshBasicMaterial( { color: 0x2c2c2c, wireframe: true, side: THREE.DoubleSide } ), // FRONT SIDE
     new THREE.MeshBasicMaterial( { color: 0x2c2c2c, wireframe: true, side: THREE.DoubleSide } ), // BACK SIDE
   ]
-  var material = new THREE.MeshFaceMaterial( stageMaterials );
-  stage = new THREE.Mesh( stageGeometry, material );
+  // var material = new THREE.MeshFaceMaterial( stageMaterials );
+  stage = new THREE.Mesh( stageGeometry, stageMaterials );
   stage.position.set( -80, 15, -100 );
   stage.receiveShadow = true;
   worldScene.add( stage );
