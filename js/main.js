@@ -53,7 +53,7 @@ function initScene() {
 
   var auditoriumGeo = new THREE.BoxGeometry( 1, 1, 1 ); 
   var loader  = new THREE.TextureLoader();
-  var texture = loader.load( "/all-of-the-lights.jpeg" );
+  var texture = loader.load( "/all-of-the-lights-w-blk.jpeg" );
   var material = new THREE.MeshBasicMaterial( {map: texture} );
   var auditorium = new THREE.Mesh(auditoriumGeo, material);
   auditorium.position.set( 0, 15, 0 );
