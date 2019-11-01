@@ -1,6 +1,6 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
-import { loadAudienceKanye } from '/js/load_audience_kanye.js';
+import { loadAudience } from '/js/load_audience.js';
 import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 ///////////// Loading Page  /////////
@@ -36,8 +36,8 @@ changeButtonText();
 /////////////////////////////////////
 
 ////////// Global Variables ////////
-var worldScene, renderer, camera, listener
-var stage, stageLight, controls, mixer
+var worldScene, renderer, camera, listener, clock
+var stage, stageLight, controls, mixer, actions
 ////////////////////////////////////
 
 /////////// Build World ////////////
@@ -51,6 +51,7 @@ function initScene() {
   camera.position.set( 120, 80, 15 );
   
   worldScene = new THREE.Scene();
+  clock = new THREE.Clock(true);
 
   var auditoriumGeo = new THREE.BoxGeometry( 1, 1, 1 ); 
   var loader  = new THREE.TextureLoader();
@@ -74,47 +75,35 @@ function initScene() {
     new THREE.MeshBasicMaterial( { color: 0x2c2c2c, wireframe: true, side: THREE.DoubleSide } ), // FRONT SIDE
     new THREE.MeshBasicMaterial( { color: 0x2c2c2c, wireframe: true, side: THREE.DoubleSide } ), // BACK SIDE
   ]
-  // var material = new THREE.MeshFaceMaterial( stageMaterials );
+  
   stage = new THREE.Mesh( stageGeometry, stageMaterials );
   stage.position.set( -80, 15, -100 );
   stage.receiveShadow = true;
   worldScene.add( stage );
 
+  
+  /// Load Kanye Model + Animation ///
   var kanyeLoader = new GLTFLoader();
-  // var dracoLoader = new DRACOLoader();
-  // dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
-  // kanyeLoader.setDRACOLoader( dracoLoader );
-  kanyeLoader.load( 'js/models/Rapping.glb', function ( gltf ) {
-
-    console.log(gltf)
-    gltf.scene.castShadow = true;
-    gltf.scene.traverse( function( object ) {
-      if ( object.isMesh ) { 
-        object.castShadow = true;
-        object.receiveShadow = true;
-      };
-    });
-    gltf.scene.scale.set( 7, 7, 7 )
-    gltf.scene.position.y = 3.3;
-    stage.add( gltf.scene );
+  kanyeLoader.load( 'js/models/kanyerapping.glb', function ( gltf ) {
+    var model = gltf.scene;
+    model.scale.set( 7, 7, 7 );
+    model.position.y = 3.3;
+    stage.add( model );
+    console.log( "Done loading kanye model" );
+    model.traverse( function ( object ) {
+      if ( object.isMesh ) object.castShadow = true;
+    } );
+    //
     var animations = gltf.animations;
-    startAnimation( animations );
-    console.log( "Done loading model kanye" );
+    mixer = new THREE.AnimationMixer( model );
+    var rappingAction = mixer.clipAction( animations[ 0 ] );
+    rappingAction.play();
+  } );
+  /////////////////////////////////////
 
-  });
-
-  function startAnimation( animations ) {
-    var animations = animations
-    mixer = new THREE.AnimationMixer( "body" );
-    var clip = THREE.AnimationClip.findByName( animations, "mixamo.com" );
-    if ( clip ) {
-      var action = mixer.clipAction( clip );
-      action.play();
-    }
-    return mixer;
-  }
-
-  loadAudienceKanye( worldScene, stage );
+  /// Audience Models ///
+  loadAudience( worldScene, stage );
+  /////////////////////////////////////
   
   var gaFloor = new THREE.Mesh(
     new THREE.PlaneGeometry( 720, 720, 30, 24 ),
@@ -329,8 +318,10 @@ function onWindowResize() {
 }
 
 function animate() {
+  requestAnimationFrame( animate );
 
-  renderer.render( worldScene, camera );
+  var mixerUpdateDelta = clock.getDelta();
+  mixer.update( mixerUpdateDelta );
 
   var targetPosition = 1;
   var originalPositionX = -80;
@@ -348,9 +339,7 @@ function animate() {
     }
   }
 
-  mixer.update();
-
-  requestAnimationFrame( animate );
+  renderer.render( worldScene, camera );
 };
 
 /// Remove Landing Page + Start Animation & Concert  ///
