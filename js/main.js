@@ -2,7 +2,7 @@ import * as THREE from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 import { loadAudience } from '/js/load_audience.js';
 import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
-
+import { enableInlineVideo } from '/node_modules/iphone-inline-video';
 ///////////// Loading Page  /////////
 var loadingPage = document.getElementById( 'loading' );
 
@@ -165,6 +165,7 @@ function initConcert() {
   camera.add( listener );
 
   var video = document.getElementById( 'video' );
+  enableInlineVideo( video );
   video.play();
   var videoTexture = new THREE.VideoTexture( video );
   videoTexture.minFilter = THREE.LinearFilter;
