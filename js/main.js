@@ -1,6 +1,7 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import { OrbitControls } from '/node_modules/three/examples/jsm/controls/OrbitControls.js';
 import { loadAudienceKanye } from '/js/load_audience_kanye.js';
+import { GLTFLoader } from '/node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 
 ///////////// Loading Page  /////////
 var loadingPage = document.getElementById( 'loading' );
@@ -36,7 +37,7 @@ changeButtonText();
 
 ////////// Global Variables ////////
 var worldScene, renderer, camera, listener
-var stage, stageLight, controls
+var stage, stageLight, controls, mixer
 ////////////////////////////////////
 
 /////////// Build World ////////////
@@ -79,7 +80,7 @@ function initScene() {
   stage.receiveShadow = true;
   worldScene.add( stage );
 
-    var kanyeLoader = new GLTFLoader();
+  var kanyeLoader = new GLTFLoader();
   // var dracoLoader = new DRACOLoader();
   // dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
   // kanyeLoader.setDRACOLoader( dracoLoader );
@@ -104,7 +105,7 @@ function initScene() {
 
   function startAnimation( animations ) {
     var animations = animations
-    var mixer = new THREE.AnimationMixer( "body" );
+    mixer = new THREE.AnimationMixer( "body" );
     var clip = THREE.AnimationClip.findByName( animations, "mixamo.com" );
     if ( clip ) {
       var action = mixer.clipAction( clip );

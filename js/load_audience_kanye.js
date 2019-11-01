@@ -7,28 +7,28 @@ function loadAudienceKanye( worldScene, stage ) {
   var worldScene = worldScene;
   var stage = stage;
 
-  var kanyeLoader = new GLTFLoader();
-  // var dracoLoader = new DRACOLoader();
-  // dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
-  // kanyeLoader.setDRACOLoader( dracoLoader );
-  kanyeLoader.load( 'js/models/Rapping.glb', function ( gltf ) {
+  // var kanyeLoader = new GLTFLoader();
+  // // var dracoLoader = new DRACOLoader();
+  // // dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
+  // // kanyeLoader.setDRACOLoader( dracoLoader );
+  // kanyeLoader.load( 'js/models/Rapping.glb', function ( gltf ) {
 
-    console.log(gltf)
-    gltf.scene.castShadow = true;
-    gltf.scene.traverse( function( object ) {
-      if ( object.isMesh ) { 
-        object.castShadow = true;
-        object.receiveShadow = true;
-      };
-    });
-    gltf.scene.scale.set( 7, 7, 7 )
-    gltf.scene.position.y = 3.3;
-    stage.add( gltf.scene );
-    var animations = gltf.animations;
-    startAnimation( animations );
-    console.log( "Done loading model kanye" );
+  //   console.log(gltf)
+  //   gltf.scene.castShadow = true;
+  //   gltf.scene.traverse( function( object ) {
+  //     if ( object.isMesh ) { 
+  //       object.castShadow = true;
+  //       object.receiveShadow = true;
+  //     };
+  //   });
+  //   gltf.scene.scale.set( 7, 7, 7 )
+  //   gltf.scene.position.y = 3.3;
+  //   stage.add( gltf.scene );
+  //   var animations = gltf.animations;
+  //   startAnimation( animations );
+  //   console.log( "Done loading model kanye" );
 
-  });
+  // });
 
   var array30 = new Array(30);
 
