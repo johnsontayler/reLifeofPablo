@@ -351,14 +351,6 @@ startButton.addEventListener( 'click', function () {
   var overlay = document.getElementById( 'overlay' );
   overlay.remove()
 });
-
-var startButton = document.getElementById( 'startButton' );
-startButton.addEventListener( 'touchstart', function () {
-  initConcert(); 
-  animate();
-  var overlay = document.getElementById( 'overlay' );
-  overlay.remove()
-});
 /////////////////////////////////////////////////////////
 
 //// About Page  ////
