@@ -79,6 +79,40 @@ function initScene() {
   stage.receiveShadow = true;
   worldScene.add( stage );
 
+    var kanyeLoader = new GLTFLoader();
+  // var dracoLoader = new DRACOLoader();
+  // dracoLoader.setDecoderPath( '/node_modules/three/examples/js/libs/draco/' );
+  // kanyeLoader.setDRACOLoader( dracoLoader );
+  kanyeLoader.load( 'js/models/Rapping.glb', function ( gltf ) {
+
+    console.log(gltf)
+    gltf.scene.castShadow = true;
+    gltf.scene.traverse( function( object ) {
+      if ( object.isMesh ) { 
+        object.castShadow = true;
+        object.receiveShadow = true;
+      };
+    });
+    gltf.scene.scale.set( 7, 7, 7 )
+    gltf.scene.position.y = 3.3;
+    stage.add( gltf.scene );
+    var animations = gltf.animations;
+    startAnimation( animations );
+    console.log( "Done loading model kanye" );
+
+  });
+
+  function startAnimation( animations ) {
+    var animations = animations
+    var mixer = new THREE.AnimationMixer( "body" );
+    var clip = THREE.AnimationClip.findByName( animations, "mixamo.com" );
+    if ( clip ) {
+      var action = mixer.clipAction( clip );
+      action.play();
+    }
+    return mixer;
+  }
+
   loadAudienceKanye( worldScene, stage );
   
   var gaFloor = new THREE.Mesh(
@@ -312,6 +346,8 @@ function animate() {
       }
     }
   }
+
+  mixer.update();
 
   requestAnimationFrame( animate );
 };
