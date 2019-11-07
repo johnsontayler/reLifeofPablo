@@ -70,8 +70,8 @@ a:active {
   border: 2px solid black;
   /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
   transition: all 0.3s ease 0s;
-  /* cursor: pointer;
-  outline: none; */
+  cursor: pointer;
+  /* outline: none; */
 }
 
 #overlay > div > button:hover {
